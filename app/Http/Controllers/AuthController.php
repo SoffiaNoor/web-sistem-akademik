@@ -10,24 +10,18 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-        // Validasi data masukan dari formulir
-        $request->validate([
-            'username' => 'required',
-            'password' => 'required',
-        ]);
+        $username = $request->input('username');
+        $password = $request->input('password');
 
-        // Coba mencari pengguna dengan username yang sesuai
-        $user = Users::where('username', $request->input('username'))->first();
+        // Lakukan pengecekan ke database
+        $user = Users::where('username', $username)->where('password', $password)->first();
 
         if ($user) {
-            // Jika pengguna ditemukan, periksa kata sandi
-            if (password_verify($request->input('password'), $user->password)) {
-                // Autentikasi berhasil, arahkan ke halaman /home
-                return redirect('/home');
-            }
+            // Jika ditemukan, arahkan pengguna ke halaman /home
+            return redirect('/home');
+        } else {
+            // Jika tidak ditemukan, arahkan pengguna kembali ke halaman login
+            return redirect()->route('login')->with('error', 'Login failed. Please check your credentials.');
         }
-
-        // Autentikasi gagal, arahkan kembali ke halaman login dengan pesan kesalahan
-        return redirect('/login')->with('error', 'Username atau password salah.');
     }
 }
