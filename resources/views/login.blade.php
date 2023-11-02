@@ -30,22 +30,20 @@
                             <div class="card card-plain">
                                 <div class="card-header pb-0 text-start">
                                     <h4 class="font-weight-bolder">Sign In</h4>
-                                    <p class="mb-0">Enter your email and password to sign in</p>
+                                    <p class="mb-0">Enter your username and password to sign in</p>
                                 </div>
                                 <div class="card-body">
-                                    <form role="form">
+                                    <form role="form" method="POST" action="{{ route('login') }}">
+                                        @csrf
                                         <div class="mb-3">
-                                            <input type="email" class="form-control form-control-lg" placeholder="Email"
-                                                aria-label="Email">
+                                            <input type="text" name="username" class="form-control form-control-lg" placeholder="Username" required>
                                         </div>
                                         <div class="mb-3">
-                                            <input type="email" class="form-control form-control-lg"
-                                                placeholder="Password" aria-label="Password">
+                                            <input type="password" name="password" class="form-control form-control-lg"
+                                                placeholder="Password" required>
                                         </div>
                                         <div class="text-center">
-                                            <button type="button" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0"
-                                                style="background: linear-gradient(45deg, #1b3c5fc9, #1B3C5F);background-size: cover;">Sign
-                                                in</button>
+                                        <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0" style="background: linear-gradient(45deg, #1b3c5fc9, #1B3C5F);background-size: cover;">Sign in</button>
                                         </div>
                                     </form>
                                 </div>
