@@ -39,7 +39,9 @@
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link bg-gradient-secondary border-radius-xl mx-3 my-1 text-white font-weight-bolder" style="background: linear-gradient(45deg, #1b3c5fc9, #1B3C5F);background-size: cover;" href="/home">
+                    <a class="nav-link bg-gradient-secondary border-radius-xl mx-3 my-1 text-white font-weight-bolder"
+                        style="background: linear-gradient(45deg, #1b3c5fc9, #1B3C5F);background-size: cover;"
+                        href="/home">
                         <i class="fa fa-tachometer" aria-hidden="true"></i>
                         <span class="nav-link-text ms-1">Dashboard</span>
                     </a>
@@ -222,6 +224,83 @@
                 </div>
             </div>
         </nav>
+
+        <div class="container-fluid py-2">
+            <div class="row">
+                <div class="col-lg-12 mb-lg-0 mb-4 shadow-xl">
+                    <div class="card p-3">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h3 class="px-3">Mata Kuliah
+                                </h3>
+                                <hr class="ms-3 mt-0"
+                                    style="background-color:#01353f;height:10px;border-radius:40px;width:50%">
+                            </div>
+                            <div class="col-sm-6">
+                                <a class="btn btn-warning" href="insert_booking.php"
+                                    style="float:right;">
+                                    <span>Tambah Data</span>
+                                    <i class="fa fa-plus ms-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table align-items-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-default text-xs font-weight-bolder">
+                                            ID</th>
+                                        <th class="text-uppercase text-default text-xs font-weight-bolder">
+                                            Nama Mata Kuliah</th>
+                                        <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">
+                                            Jumlah SKS</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-uppercase text-default text-xs font-weight-bolder">
+                                            <div class="d-flex align-items-center">
+                                                <span class="ms-3 text-xs">
+                                                    
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex px-2">
+                                                <div class="my-auto">
+                                                    <h6 class="mb-0 text-xs">
+                                                        
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="text-xs font-weight-bold mb-0">
+                                            </p>
+                                        </td>
+                                        <td
+                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                            <a href="#" class="text-gray-400 hover:text-amber-400  mr-2">
+                                                <i class="fa fa-eye text-sm" method="POST"></i>
+                                            </a>
+                                            <a href="#" class="text-gray-400 hover:text-amber-400 mx-2">
+                                                <i class="fas fa-edit text-sm" method="POST"></i>
+                                            </a>
+                                            <a href="#" class="text-gray-400 hover:text-amber-400"
+                                                data-bs-toggle="modal" data-bs-target="#exampleModal" data-dataid="#">
+                                                <i class="fa fa-trash text-sm"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <script src="../assets/js/core/popper.min.js"></script>
@@ -229,15 +308,6 @@
     <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
     <script src="../assets/js/plugins/chartjs.min.js"></script>
-    <script>
-        var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-      var options = {
-        damping: '0.5'
-      }
-      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
-    </script>
 
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 

@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class MataKuliahController extends Controller
 {
     public function index(){
-        return view("layouts.mata_kuliah.index");
+        return view("mata_kuliah.index");
     }
 }
