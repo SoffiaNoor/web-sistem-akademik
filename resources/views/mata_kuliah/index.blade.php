@@ -7,7 +7,7 @@
         </h3>
         <hr class="ms-3 mt-0" style="background-color:#01353f;height:10px;border-radius:40px;width:50%">
     </div>
-    <div class="col-sm-6"> <a class="btn btn-warning" href="insert_booking.php" style="float:right;">
+    <div class="col-sm-6"> <a class="btn btn-warning" href="{{route('mata_kuliah.create')}}" style="float:right;">
         <span>Tambah Data</span>
         <i class="fa fa-plus ms-2"></i>
         </a>

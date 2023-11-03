@@ -15,5 +15,5 @@ class MataKuliah extends Model
 
     // Specify the primary key column name
     protected $primaryKey = 'IDMK';
-
+    protected $fillable = ['IDMK', 'NamaMK'];
 }
