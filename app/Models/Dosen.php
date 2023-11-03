@@ -17,3 +17,4 @@ class Dosen extends Model
     protected $primaryKey = 'IDDosen';
     protected $fillable = ['IDDosen', 'NamaDosen','Alamat'];
 }
+
