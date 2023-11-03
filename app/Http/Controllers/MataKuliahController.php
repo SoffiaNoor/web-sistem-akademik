@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 class MataKuliahController extends Controller
 {
     public function index(){
-        return view("mata_kuliah.index");
+        // codingan buat dapetin data dari model
+        $mataKuliah = MataKuliah::all();
+        var_dump($mataKuliah);die;
+
+        return view("layouts.mata_kuliah.index", compact('mataKuliah'));
     }
 }
