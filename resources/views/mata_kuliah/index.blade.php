@@ -245,56 +245,38 @@
                             </div>
                         </div>
                         <div class="table-responsive">
-                            <table class="table align-items-center mb-0">
-                                <thead>
-                                    <tr>
-                                        <th class="text-uppercase text-default text-xs font-weight-bolder">
-                                            ID</th>
-                                        <th class="text-uppercase text-default text-xs font-weight-bolder">
-                                            Nama Mata Kuliah</th>
-                                        <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">
-                                            Jumlah SKS</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="text-uppercase text-default text-xs font-weight-bolder">
-                                            <div class="d-flex align-items-center">
-                                                <span class="ms-3 text-xs">
-                                                    
-                                                </span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex px-2">
-                                                <div class="my-auto">
-                                                    <h6 class="mb-0 text-xs">
-                                                        
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <p class="text-xs font-weight-bold mb-0">
-                                            </p>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <a href="#" class="text-gray-400 hover:text-amber-400  mr-2">
-                                                <i class="fa fa-eye text-sm" method="POST"></i>
-                                            </a>
-                                            <a href="#" class="text-gray-400 hover:text-amber-400 mx-2">
-                                                <i class="fas fa-edit text-sm" method="POST"></i>
-                                            </a>
-                                            <a href="#" class="text-gray-400 hover:text-amber-400"
-                                                data-bs-toggle="modal" data-bs-target="#exampleModal" data-dataid="#">
-                                                <i class="fa fa-trash text-sm"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <table class="table align-items-center mb-0">
+                        <thead>
+                            <tr>
+                                <th class="text-uppercase text-default text-xs font-weight-bolder">ID</th>
+                                <th class="text-uppercase text-default text-xs font-weight-bolder">Nama Mata Kuliah</th>
+                                <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">Jumlah SKS</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($mataKuliah as $MK)
+                            <tr>
+                                <td>{{ $MK->IDMK }}</td>
+                                <td>{{ $MK->NamaMK }}</td>
+                                <td>{{ $MK->SKS }}</td>
+                                <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                    <a href="{{route('mata_kuliah.show',$MK->IDMK)}}" class="text-gray-400 hover:text-amber-400  mr-2">
+                                        <i class="fa fa-eye text-sm" method="POST"></i>
+                                    </a>
+                                    <a href="#" class="text-gray-400 hover:text-amber-400 mx-2">
+                                        <i class="fas fa-edit text-sm" method="POST"></i>
+                                    </a>
+                                    <a href="#" class="text-gray-400 hover:text-amber-400"
+                                        data-bs-toggle="modal" data-bs-target="#exampleModal" data-dataid="#">
+                                        <i class="fa fa-trash text-sm"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
                         </div>
                     </div>
                 </div>

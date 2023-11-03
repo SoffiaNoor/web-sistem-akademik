@@ -14,3 +14,5 @@ Route::get('/register', [regisController::class, 'showRegistrationForm'])->name(
 Route::post('/register', [regisController::class, 'register']);
 
 Route::get('/mata_kuliah', [MataKuliahController::class, 'index']);
+Route::get('/mata_kuliah/{IDMK}', [MataKuliahController::class, 'show'])->name('mata_kuliah.show');
+// Route::resource('/mata_kuliah', MataKuliahController::class);
