@@ -29,8 +29,8 @@
                         <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
                             <div class="card card-plain">
                                 <div class="card-header pb-0 text-start">
-                                    <h4 class="font-weight-bolder">Sign In</h4>
-                                    <p class="mb-0">Enter your username and password to sign in</p>
+                                    <h4 class="font-weight-bolder">Register</h4>
+                                    <p class="mb-0">Enter your username and password to register</p>
                                 </div>
                                 <div class="card-body">
                                     @if(session('success'))
@@ -43,22 +43,23 @@
                                         {{ session('error') }}
                                     </div>
                                     @endif
-                                    <form role="form" method="POST" action="{{ route('login') }}">
+                                    <form role="form" method="POST" action="{{ route('register') }}">
                                         @csrf
                                         <div class="mb-3">
-                                            <input type="text" name="username" class="form-control form-control-lg"
-                                                placeholder="Username" required>
+                                            <input type="text" name="username" class="form-control form-control-lg" placeholder="Username" required>
                                         </div>
                                         <div class="mb-3">
-                                            <input type="password" name="password" class="form-control form-control-lg"
-                                                placeholder="Password" required>
+                                            <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" required>
+                                        </div>
+                                        <!-- Tambahkan kolom konfirmasi kata sandi untuk pendaftaran -->
+                                        <div class="mb-3">
+                                            <input type="password" name="password_confirmation" class="form-control form-control-lg" placeholder="Confirm Password" required>
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0"
-                                                style="background: linear-gradient(45deg, #1b3c5fc9, #1B3C5F);background-size: cover;">Sign
-                                                in</button>
+                                            <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0" style="background: linear-gradient(45deg, #1b3c5fc9, #1B3C5F);background-size: cover;">Register</button>
                                         </div>
                                     </form>
+
                                 </div>
                             </div>
                         </div>
