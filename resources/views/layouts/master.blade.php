@@ -64,7 +64,7 @@
 
 <body class="g-sidenav-show bg-gray-100">
     <div class="loader-container">
-        <img src="assets/images/RUNGKAD3.png" class="wavy-image" alt="Loading..." />
+        <img src="http://localhost:8000/assets/images/RUNGKAD3.png" class="wavy-image" alt="Loading..." />
     </div>
     <div class="min-height-300 position-absolute w-100"></div>
     <span class="mask bg-gradient-warning opacity-10"

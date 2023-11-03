@@ -7,17 +7,20 @@ use App\Models\MataKuliah;
 
 class MataKuliahController extends Controller
 {
-    public function index(){
-        $mataKuliah = MataKuliah::all();
+    public function index()
+    {
+        $mataKuliah = MataKuliah::paginate(5);
 
         return view("mata_kuliah.index", compact('mataKuliah'));
     }
-    public function create(){
+    public function create()
+    {
         return view("mata_kuliah.create");
     }
 
 
-    public function show(string $IDMK){
+    public function show(string $IDMK)
+    {
         $mataKuliah = MataKuliah::where('IDMK', $IDMK)->first();
         return view("mata_kuliah.view", compact('mataKuliah'));
     }
@@ -36,7 +39,7 @@ class MataKuliahController extends Controller
 
         MataKuliah::create($data);
 
-        return redirect()->route('mata_kuliah.index');
+        return redirect()->route('mata_kuliah.index')->with('success', 'Mata Kuliah berhasil ditambah!');
     }
 
     public function update(Request $request, MataKuliah $mataKuliah)
@@ -45,11 +48,11 @@ class MataKuliahController extends Controller
             'NamaMK' => 'required|string',
             'SKS' => 'required|integer',
         ]);
-    
+
         $mataKuliah->update($request->all());
-    
-        return redirect()->route('mata_kuliah.index');
-    
+
+        return redirect()->route('mata_kuliah.index')->with('success', 'Mata Kuliah berhasil diperbarui!');
+
     }
 
     public function destroy($id)
@@ -57,16 +60,17 @@ class MataKuliahController extends Controller
         $mataKuliah = MataKuliah::find($id);
 
         if (!$mataKuliah) {
-            return redirect()->route('mata_kuliah.index')->with('error', 'Mata kuliah tidak ditemukan');
+            return redirect()->route('mata_kuliah.index')->with('error', 'Mata kuliah tidak ditemukan!');
         }
 
         $mataKuliah->delete();
 
-        return redirect()->route('mata_kuliah.index')->with('success', 'Mata kuliah berhasil dihapus');
+        return redirect()->route('mata_kuliah.index')->with('success', 'Mata kuliah berhasil dihapus!');
     }
 
 
-    public function edit(MataKuliah $mataKuliah){
+    public function edit(MataKuliah $mataKuliah)
+    {
         return view("mata_kuliah.update", compact('mataKuliah'));
     }
 }

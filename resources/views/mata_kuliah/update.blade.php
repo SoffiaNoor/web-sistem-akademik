@@ -50,7 +50,7 @@
                                         </a>
                                         <a href="/mata_kuliah" class="btn-inner--text text-white ms-2">Kembali</a>
                                     </button>
-                                    <button class="btn btn-icon btn-3 btn-primary" type="submit">
+                                    <button class="btn btn-icon btn-3 btn-success" type="submit">
                                         <a class="btn-inner--icon text-white"><i class="fa fa-pencil" aria-hidden="true"></i>
                                         </a>
                                         <a class="btn-inner--text text-white ms-2">Update</a>
