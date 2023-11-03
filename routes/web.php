@@ -6,6 +6,11 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MataKuliahController;
 use App\Http\Controllers\regisController;
+use App\Http\Controllers\DosenController;
+use App\Http\Controllers\RuangController;
+use App\Http\Controllers\TempatController;
+use App\Http\Controllers\AmbilKuliahController;
+use App\Http\Controllers\MahasiswaController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/login', [HomeController::class, 'login']);
