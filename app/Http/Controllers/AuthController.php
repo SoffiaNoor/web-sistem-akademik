@@ -31,7 +31,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             // Jika kredensial cocok, arahkan pengguna ke halaman /home
-            return redirect('/home');
+            return redirect('/');
         }
 
         // Jika kredensial tidak cocok, arahkan pengguna kembali ke halaman login
