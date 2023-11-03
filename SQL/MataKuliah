@@ -1,0 +1,11 @@
+
+INSERT INTO MataKuliah 
+VALUES ('MK101', 'Aljabar Linear',4)
+INSERT INTO MataKuliah 
+VALUES ('MK401', 'Algoritma dan Pemrograman',4)
+INSERT INTO MataKuliah 
+VALUES ('MK201', 'Analisis',2)
+INSERT INTO MataKuliah 
+VALUES ('MK301', 'Analisis Kombinatorika',3)
+INSERT INTO MataKuliah 
+VALUES ('MK201', 'Teknologi Basis Data',2)
