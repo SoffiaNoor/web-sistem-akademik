@@ -20,7 +20,7 @@ class MataKuliahController extends Controller
 
 
     public function show(string $IDMK){
-        $mataKuliah = MataKuliah::findOrFail($IDMK);
+        $mataKuliah = MataKuliah::where('IDMK', $IDMK)->first();
         return view("mata_kuliah.view", compact('mataKuliah'));
     }
 }

@@ -9,6 +9,11 @@ class MataKuliah extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    public $incrementing = false;
+    protected $keyType = 'string';
     protected $table = 'MataKuliah';
+
+    // Specify the primary key column name
     protected $primaryKey = 'IDMK';
+
 }
