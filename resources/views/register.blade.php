@@ -29,8 +29,8 @@
                         <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
                             <div class="card card-plain">
                                 <div class="card-header pb-0 text-start">
-                                    <h4 class="font-weight-bolder">Sign In</h4>
-                                    <p class="mb-0">Enter your username and password to sign in</p>
+                                    <h4 class="font-weight-bolder">Register</h4>
+                                    <p class="mb-0">Enter your username and password to register</p>
                                 </div>
                                 <div class="card-body">
                                     @if(session('success'))
