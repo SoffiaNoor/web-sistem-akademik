@@ -8,9 +8,7 @@ use App\Models\MataKuliah;
 class MataKuliahController extends Controller
 {
     public function index(){
-        // codingan buat dapetin data dari model
         $mataKuliah = MataKuliah::all();
-        // var_dump($mataKuliah);die;
 
         return view("mata_kuliah.index", compact('mataKuliah'));
     }
@@ -24,22 +22,6 @@ class MataKuliahController extends Controller
         return view("mata_kuliah.view", compact('mataKuliah'));
     }
 
-    // public function update(Request $request, MataKuliah $mataKuliah){
-    //     $mataKuliah->update($request->all());
-    //     return redirect()->route('mata_kuliah.index');
-    // }
-
-    // public function store(Request $request){
-    //     $this->validate($request, [
-    //         'IDMK' => 'required|max:5|string',
-    //         'NamaMK' => 'required|string',
-    //     ]);
-        
-    //     $input = $request->all();
-    //     MataKuliah::create($input);
-
-    //     return redirect()->route('mata_kuliah.index');
-    // }
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -57,25 +39,6 @@ class MataKuliahController extends Controller
         return redirect()->route('mata_kuliah.index');
     }
 
-    // public function update(Request $request, MataKuliah $mataKuliah)
-    // {
-    //     $this->validate($request, [
-    //         'IDMK' => 'required|max:5|string',
-    //         'NamaMK' => 'required|string',
-    //         'SKS' => 'required|integer',
-    //     ]);
-
-    //     $data = [
-    //         'IDMK' => $request->input('IDMK'),
-    //         'NamaMK' => $request->input('NamaMK'),
-    //         'SKS' => $request->input('SKS'),
-    //     ];
-
-    //     $mataKuliah->update($data);
-
-    //     return redirect()->route('mata_kuliah.index');
-    // }
-
     public function update(Request $request, MataKuliah $mataKuliah)
     {
         $this->validate($request, [
@@ -88,9 +51,18 @@ class MataKuliahController extends Controller
         return redirect()->route('mata_kuliah.index');
     
     }
-    public function destroy(MataKuliah $mataKuliah){
+
+    public function destroy($id)
+    {
+        $mataKuliah = MataKuliah::find($id);
+
+        if (!$mataKuliah) {
+            return redirect()->route('mata_kuliah.index')->with('error', 'Mata kuliah tidak ditemukan');
+        }
+
         $mataKuliah->delete();
-        return redirect()->route('mata_kuliah.index');
+
+        return redirect()->route('mata_kuliah.index')->with('success', 'Mata kuliah berhasil dihapus');
     }
 
 

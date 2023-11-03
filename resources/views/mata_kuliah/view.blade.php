@@ -11,7 +11,9 @@
                             </h5>
                             <hr style="background-color:#01353f;height:10px;border-radius:40px;width:25%">
                         </div>
-                        <form class="p-3">
+                        <form class="p-3" action="{{ route('mata_kuliah.destroy', $mataKuliah->IDMK) }}" method="POST">
+                        @method('DELETE')
+                        @csrf
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -53,7 +55,7 @@
                                         </a>
                                         <a href="{{route('mata_kuliah.edit',$mataKuliah->IDMK)}}" class="btn-inner--text text-white ms-2">Edit</a>
                                     </button>
-                                    <button class="btn btn-icon btn-3 btn-danger" type="button">
+                                    <button class="btn btn-icon btn-3 btn-danger" type="submit">
                                         <a class="btn-inner--icon text-white"><i class="fa fa-trash" aria-hidden="true"></i>
                                         </a>
                                         <a class="btn-inner--text text-white ms-2">Hapus</a>
