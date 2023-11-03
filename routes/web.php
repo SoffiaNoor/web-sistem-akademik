@@ -14,5 +14,9 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/register', [regisController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [regisController::class, 'register']);
 Route::resource('/mata_kuliah', MataKuliahController::class);
-
 Route::resource('/audit_mata_kuliah', AuditController::class);
+Route::resource('/dosen', DosenController::class);
+Route::resource('/ruang', RuangController::class);
+Route::resource('/tempat', TempatController::class);
+Route::resource('/ambil-kuliah', AmbilKuliahController::class);
+Route::resource('/mahasiswa', MahasiswaController::class);
