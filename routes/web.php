@@ -12,7 +12,7 @@ use App\Http\Controllers\TempatController;
 use App\Http\Controllers\AmbilKuliahController;
 use App\Http\Controllers\MahasiswaController;
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index']);
 Route::get('/login', [HomeController::class, 'login']);
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
@@ -23,5 +23,5 @@ Route::resource('/audit_mata_kuliah', AuditController::class);
 Route::resource('/dosen', DosenController::class);
 Route::resource('/ruang', RuangController::class);
 Route::resource('/tempat', TempatController::class);
-Route::resource('/ambil-kuliah', AmbilKuliahController::class);
+Route::resource('/ambil_kuliah', AmbilKuliahController::class);
 Route::resource('/mahasiswa', MahasiswaController::class);

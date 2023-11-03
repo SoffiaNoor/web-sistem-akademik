@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="assets/images/RUNGKAD.png">
+    <link rel="icon" type="image/png" href="http://localhost:8000/assets/images/RUNGKAD.png">
     <title>
         RUNGKAD
     </title>
@@ -16,8 +16,56 @@
     <!-- CSS Files -->
     <link id="pagestyle" href="http://localhost:8000/assets/css/argon-dashboard.css" rel="stylesheet" />
 </head>
+<style>
+    .sidenav {
+        z-index: 1!important;
+    }
 
-<body class="g-sidenav-show   bg-gray-100">
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 2;
+    }
+
+    .loader-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #1B3C5F;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    .wavy-image {
+        animation: wavy 2s infinite linear;
+        max-width: 100px; 
+    }
+
+    @keyframes wavy {
+        0% {
+            transform: translateX(0);
+        }
+        50% {
+            transform: translateX(10px); 
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+</style>
+
+<body class="g-sidenav-show bg-gray-100">
+    <div class="loader-container">
+        <img src="assets/images/RUNGKAD3.png" class="wavy-image" alt="Loading..." />
+    </div>
     <div class="min-height-300 position-absolute w-100"></div>
     <span class="mask bg-gradient-warning opacity-10"
         style="background: linear-gradient(45deg, #1b3c5fc9, #1B3C5F);background-size: cover;"></span>
@@ -36,41 +84,67 @@
         <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link bg-gradient-secondary border-radius-xl mx-3 my-1 text-white font-weight-bolder"
-                        style="background: linear-gradient(45deg, #1b3c5fc9, #1B3C5F);background-size: cover;"
-                        href="/home">
+                    <a class="nav-link mx-3 my-1 text-dark {{ preg_match('/home/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
+                        href="/home"
+                        style="{{ preg_match('/home/',Route::current()->uri) == true ? 'background: linear-gradient(45deg, #1b3c5fc9, #1B3C5F);background-size: cover;' : '' }}">
                         <i class="fa fa-tachometer" aria-hidden="true"></i>
                         <span class="nav-link-text ms-1">Dashboard</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-3 my-1 text-dark" href="/mata_kuliah">
+                    <a class="nav-link mx-3 my-1 text-dark {{ preg_match('/mahasiswa/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
+                        href="/mahasiswa"
+                        style="{{ preg_match('/mahasiswa/',Route::current()->uri) == true ? 'background: linear-gradient(45deg, #1b3c5fc9, #1B3C5F);background-size: cover;' : '' }}">
                         <i class="fa fa-user" aria-hidden="true"></i>
                         <span class="nav-link-text ms-1 font-weight-bold">Mahasiswa</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-3 my-1 text-dark" href="/mata_kuliah">
+                    <a class="nav-link mx-3 my-1 text-dark {{ preg_match('/mata_kuliah/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
+                        href="/mata_kuliah"
+                        style="{{ preg_match('/mata_kuliah/',Route::current()->uri) == true ? 'background: linear-gradient(45deg, #1b3c5fc9, #1B3C5F);background-size: cover;' : '' }}">
                         <i class="fa fa-bookmark" aria-hidden="true"></i>
                         <span class="nav-link-text ms-1 font-weight-bold">Mata Kuliah</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-3 my-1 text-dark" href="/mata_kuliah">
+                    <a class="nav-link mx-3 my-1 text-dark {{ preg_match('/dosen/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
+                        href="/dosen"
+                        style="{{ preg_match('/dosen/',Route::current()->uri) == true ? 'background: linear-gradient(45deg, #1b3c5fc9, #1B3C5F);background-size: cover;' : '' }}">
                         <i class="fa fa-users" aria-hidden="true"></i>
                         <span class="nav-link-text ms-1 font-weight-bold">Dosen</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-3 my-1 text-dark" href="/mata_kuliah">
+                    <a class="nav-link mx-3 my-1 text-dark {{ preg_match('/ruang/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
+                        href="/ruang"
+                        style="{{ preg_match('/ruang/',Route::current()->uri) == true ? 'background: linear-gradient(45deg, #1b3c5fc9, #1B3C5F);background-size: cover;' : '' }}">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         <span class="nav-link-text ms-1 font-weight-bold">Ruang Kelas</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-3 my-1 text-dark {{ preg_match('/kelas/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
+                        href="/kelas"
+                        style="{{ preg_match('/kelas/',Route::current()->uri) == true ? 'background: linear-gradient(45deg, #1b3c5fc9, #1B3C5F);background-size: cover;' : '' }}">
+                        <i class="fas fa-map" aria-hidden="true"></i>
+                        <span class="nav-link-text ms-1 font-weight-bold">Kelas Mata Kuliah</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-3 my-1 text-dark {{ preg_match('/ambil_kuliah/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
+                        href="/ambil_kuliah"
+                        style="{{ preg_match('/ambil_kuliah/',Route::current()->uri) == true ? 'background: linear-gradient(45deg, #1b3c5fc9, #1B3C5F);background-size: cover;' : '' }}">
+                        <i class="fa fa-hand-rock-o" aria-hidden="true"></i>
+                        <span class="nav-link-text ms-1 font-weight-bold">Ambil Mata Kuliah</span>
+                    </a>
+                </li>
                 <h6 class="ps-4 my-2 text-uppercase text-xs font-weight-bolder opacity-6">Histori</h6>
                 <li class="nav-item">
-                    <a class="nav-link mx-3 my-1 text-dark" href="/audit_mata_kuliah">
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <a class="nav-link mx-3 my-1 text-dark {{ preg_match('/audit_mata_kuliah/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
+                        href="/audit_mata_kuliah"
+                        style="{{ preg_match('/audit_mata_kuliah/',Route::current()->uri) == true ? 'background: linear-gradient(45deg, #1b3c5fc9, #1B3C5F);background-size: cover;' : '' }}">
+                        <i class="fa fa-save" aria-hidden="true"></i>
                         <span class="nav-link-text ms-1 font-weight-bold">Mata Kuliah</span>
                     </a>
                 </li>
@@ -125,11 +199,11 @@
     </main>
 
     @yield('jquery')
-    <script src="../assets/js/core/popper.min.js"></script>
-    <script src="../assets/js/core/bootstrap.min.js"></script>
-    <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-    <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
-    <script src="../assets/js/plugins/chartjs.min.js"></script>
+    <script src="http://localhost:8000/assets/js/core/popper.min.js"></script>
+    <script src="http://localhost:8000/assets/js/core/bootstrap.min.js"></script>
+    <script src="http://localhost:8000/assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="http://localhost:8000/assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <script src="http://localhost:8000/assets/js/plugins/chartjs.min.js"></script>
     <script>
         var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -139,7 +213,11 @@
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
     </script>
-
+    <script>
+        window.addEventListener('load', function () {
+        document.querySelector('.loader-container').style.display = 'none';
+    });
+    </script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
     <script src="../assets/js/argon-dashboard.min.js?v=2.0.4"></script>
