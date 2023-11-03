@@ -24,10 +24,10 @@ class MataKuliahController extends Controller
         return view("mata_kuliah.view", compact('mataKuliah'));
     }
 
-    public function update(Request $request, MataKuliah $mataKuliah){
-        $mataKuliah->update($request->all());
-        return redirect()->route('mata_kuliah.index');
-    }
+    // public function update(Request $request, MataKuliah $mataKuliah){
+    //     $mataKuliah->update($request->all());
+    //     return redirect()->route('mata_kuliah.index');
+    // }
 
     // public function store(Request $request){
     //     $this->validate($request, [
@@ -55,5 +55,46 @@ class MataKuliahController extends Controller
         MataKuliah::create($data);
 
         return redirect()->route('mata_kuliah.index');
+    }
+
+    // public function update(Request $request, MataKuliah $mataKuliah)
+    // {
+    //     $this->validate($request, [
+    //         'IDMK' => 'required|max:5|string',
+    //         'NamaMK' => 'required|string',
+    //         'SKS' => 'required|integer',
+    //     ]);
+
+    //     $data = [
+    //         'IDMK' => $request->input('IDMK'),
+    //         'NamaMK' => $request->input('NamaMK'),
+    //         'SKS' => $request->input('SKS'),
+    //     ];
+
+    //     $mataKuliah->update($data);
+
+    //     return redirect()->route('mata_kuliah.index');
+    // }
+
+    public function update(Request $request, MataKuliah $mataKuliah)
+    {
+        $this->validate($request, [
+            'NamaMK' => 'required|string',
+            'SKS' => 'required|integer',
+        ]);
+    
+        $mataKuliah->update($request->all());
+    
+        return redirect()->route('mata_kuliah.index');
+    
+    }
+    public function destroy(MataKuliah $mataKuliah){
+        $mataKuliah->delete();
+        return redirect()->route('mata_kuliah.index');
+    }
+
+
+    public function edit(MataKuliah $mataKuliah){
+        return view("mata_kuliah.update", compact('mataKuliah'));
     }
 }

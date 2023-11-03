@@ -30,7 +30,7 @@
                             class="text-gray-400 hover:text-amber-400  mr-2">
                             <i class="fa fa-eye text-sm" method="POST"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-amber-400 mx-2">
+                        <a href="{{route('mata_kuliah.edit',$MK->IDMK)}}" class="text-gray-400 hover:text-amber-400 mx-2">
                             <i class="fas fa-edit text-sm" method="POST"></i>
                         </a>
                         <a href="#" class="text-gray-400 hover:text-amber-400" data-bs-toggle="modal"
@@ -45,6 +45,7 @@
 
     </div>
 </div>
+
 @endsection
 
 @section('jquery')
