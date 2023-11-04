@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\AmbilKuliah;
 use App\Models\Mahasiswa;
 use App\Models\MataKuliah;
+use Illuminate\Support\Facades\DB;
 class AmbilKuliahController extends Controller
 {
     public function index()
@@ -37,19 +38,26 @@ class AmbilKuliahController extends Controller
         return view("ambil_kuliah.update", compact('ambilKuliah'));
     }
 
-    public function destroy($NRP, $IDMK)
+    public function destroy(string $NRP, string $IDMK)
     {
-        // Gunakan metode where untuk mencocokkan kedua primary key
-        $ambilKuliah = AmbilKuliah::where('NRP', $NRP)
-                                ->where('IDMK', $IDMK)
-                                ->first();
+        // Check if the ambil kuliah object exists
+        $ambilKuliah = DB::table('AmbilKuliah')
+            ->where('NRP', $NRP)
+            ->where('IDMK', $IDMK)
+            ->first();
 
         if (!$ambilKuliah) {
+            // Redirect the user to an error page
             return redirect()->route('ambil_kuliah.index')->with('error', 'Ambil kuliah tidak ditemukan!');
         }
 
-        $ambilKuliah->delete();
+        // Delete the ambil kuliah object
+        DB::table('AmbilKuliah')
+            ->where('NRP', $NRP)
+            ->where('IDMK', $IDMK)
+            ->delete();
 
+        // Redirect the user to the ambil kuliah index page
         return redirect()->route('ambil_kuliah.index')->with('success', 'Ambil kuliah berhasil dihapus!');
     }
 
@@ -72,16 +80,19 @@ class AmbilKuliahController extends Controller
         return redirect()->route('ambil_kuliah.index')->with('success', 'Ambil Kuliah berhasil ditambah!');
     }
 
-    public function update(Request $request, AmbilKuliah $ambilKuliah)
-    {
-        $this->validate($request, [
-            'NilaiAngka' => 'required|integer',
-            // Tambahkan validasi lain sesuai kebutuhan Anda
-        ]);
+    public function update(Request $request)
+{
+    $this->validate($request, [
+        'NilaiAngka' => 'required|integer',
+        // Tambahkan validasi lain sesuai kebutuhan Anda
+    ]);
 
-        $ambilKuliah->update($request->all());
+    $NRP = $request->input('NRP');
+    $IDMK = $request->input('IDMK');
 
-        return redirect()->route('ambil_kuliah.index')->with('success', 'Ambil Kuliah berhasil diperbarui!');
-    }
+    // Lakukan update berdasarkan $NRP dan $IDMK
+
+    return redirect()->route('ambil_kuliah.index')->with('success', 'Ambil Kuliah berhasil diperbarui!');
+}
 
 }
