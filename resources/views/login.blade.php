@@ -46,8 +46,8 @@
                                     <form role="form" method="POST" action="{{ route('login') }}">
                                         @csrf
                                         <div class="mb-3">
-                                            <input type="text" name="username" class="form-control form-control-lg"
-                                                placeholder="Username" required>
+                                            <input type="email" name="email" class="form-control form-control-lg"
+                                                placeholder="Email" required>
                                         </div>
                                         <div class="mb-3">
                                             <input type="password" name="password" class="form-control form-control-lg"
