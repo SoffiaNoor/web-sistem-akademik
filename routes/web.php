@@ -24,4 +24,9 @@ Route::resource('/dosen', DosenController::class);
 Route::resource('/ruang', RuangController::class);
 Route::resource('/tempat', TempatController::class);
 Route::resource('/ambil_kuliah', AmbilKuliahController::class);
+Route::get('ambil_kuliah/{NRP}/{IDMK}', [AmbilKuliahController::class,'show'])->name('ambil_kuliah.show');
+Route::get('ambil_kuliah/{NRP}/{IDMK}/edit', [AmbilKuliahController::class,'edit'])->name('ambil_kuliah.edit');
+Route::delete('ambil_kuliah/{NRP}/{IDMK}', [AmbilKuliahController::class,'destroy'])->name('ambil_kuliah.destroy');
+Route::put('ambil_kuliah/{NRP}/{IDMK}/edit', [AmbilKuliahController::class,'update'])->name('ambil_kuliah.update');
+
 Route::resource('/mahasiswa', MahasiswaController::class);

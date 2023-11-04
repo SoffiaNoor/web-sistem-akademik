@@ -78,22 +78,22 @@
                                         </span>
                                     </div>
                                 </td>
-                                {{-- 
+                                
                                 <td
                                     class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                     <a href="{{ route('ambil_kuliah.show', ['NRP' => $AK->NRP, 'IDMK' => $AK->IDMK]) }}"
                                         class="text-gray-400 hover:text-amber-400  mr-2"> 
                                         <i class="fa fa-eye text-sm"></i>
-                                    </a>
+                                    </a>   
                                     <a href="{{ route('ambil_kuliah.edit', ['NRP' => $AK->NRP, 'IDMK' => $AK->IDMK]) }}"
                                         class="text-gray-400 hover:text-amber-400 mx-2">
                                         <i class="fas fa-edit text-sm"></i>
                                     <a href="#" class="text-gray-400 hover:text-amber-400" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal{{['NRP' => $AK->NRP, 'IDMK' => $AK->IDMK]}}">
+                                        data-bs-target="#deleteModal{{ $AK->NRP }}-{{ $AK->IDMK }}">
                                         <i class="fa fa-trash text-sm"></i>
                                     </a>
 
-                                    <div class="modal fade" id="deleteModal{{['NRP' => $AK->NRP, 'IDMK' => $AK->IDMK]}}" tabindex="-1" role="dialog"
+                                    <div class="modal fade" id="deleteModal{{ $AK->NRP }}-{{ $AK->IDMK }}" tabindex="-1" role="dialog"
                                         aria-labelledby="deleteModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
@@ -105,8 +105,11 @@
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Apakah anda yakin menghapus Ambil Kuliah Mahasiswa<span
-                                                        class="font-weight-bolder">{{$AK->NRP}}</span>?
+                                                    Apakah anda yakin menghapus Ambil Kuliah Mahasiswa <span
+                                                        class="font-weight-bolder">{{$AK->NRP}}</span>
+                                                </div>
+                                                <div class="modal-body">
+                                                    pada mata kuliah <span class="font-weight-bolder">{{$AK->IDMK}}</span>?
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
@@ -121,7 +124,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </td> --}}
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
