@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\AmbilKuliah;
+use App\Models\Mahasiswa;
+use App\Models\MataKuliah;
 class AmbilKuliahController extends Controller
 {
     public function index()
@@ -14,7 +16,12 @@ class AmbilKuliahController extends Controller
     }
     public function create()
     {
-        return view("ambil_kuliah.create");
+        $mahasiswa = Mahasiswa::all();
+        $model1 = new Mahasiswa();
+        $mataKuliah = MataKuliah::all();
+        $model2 = new MataKuliah();
+
+        return view("ambil_kuliah.create", compact('mahasiswa', 'model1','mataKuliah', 'model2'));
     }
 
     public function show(string $NRP, string $IDMK)
@@ -22,7 +29,6 @@ class AmbilKuliahController extends Controller
         $ambilKuliah = AmbilKuliah::where('NRP', $NRP)
                                 ->where('IDMK', $IDMK)
                                 ->first();
-
         return view("ambil_kuliah.view", compact('ambilKuliah'));
     }
     public function edit(AmbilKuliah $ambilKuliah)
@@ -45,5 +51,25 @@ class AmbilKuliahController extends Controller
 
         return redirect()->route('mata_kuliah.index')->with('success', 'Mata kuliah berhasil dihapus!');
     }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'NRP' => 'required|string|max:5',
+            'IDMK' => 'required|string|max:5',
+            'NilaiAngka' => 'required|numeric',
+        ]);
+    
+        $data = [
+            'NRP' => $request->input('NRP'),
+            'IDMK' => $request->input('IDMK'),
+            'NilaiAngka' => $request->input('NilaiAngka'),
+        ];
+
+        AmbilKuliah::create($data);
+
+        return redirect()->route('ambil_kuliah.index')->with('success', 'Ambil Kuliah berhasil ditambah!');
+    }
+
 
 }
