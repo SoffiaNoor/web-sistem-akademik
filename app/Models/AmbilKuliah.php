@@ -13,6 +13,16 @@ class AmbilKuliah extends Model
     public $incrementing = false;
     protected $keyType = 'string';
     protected $table = 'AmbilKuliah';
-    protected $primaryKey = ['NRP','IDMK'];
-    protected $fillable = ['NRP', 'IDMK','NilaiAngka','NilaiHuruf'];
+    protected $primaryKey = ['NRP', 'IDMK'];
+    protected $fillable = ['NRP', 'IDMK', 'NilaiAngka', 'NilaiHuruf'];
+
+    public function mataKuliah()
+    {
+        return $this->belongsTo(MataKuliah::class, 'IDMK');
+    }
+    public function mahasiswa()
+    {
+        return $this->belongsTo(Mahasiswa::class, 'NRP');
+    }
 }
+
