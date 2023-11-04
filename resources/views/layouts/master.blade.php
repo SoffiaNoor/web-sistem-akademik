@@ -15,10 +15,25 @@
     <link href="http://localhost:8000/assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="http://localhost:8000/assets/css/argon-dashboard.css" rel="stylesheet" />
+
+    <!-- Animasi -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 <style>
+    .fixed-bottom-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        z-index: 1;
+    }
+
     .sidenav {
-        z-index: 1!important;
+        z-index: 999 !important;
     }
 
     .overlay {
@@ -28,7 +43,7 @@
         width: 100%;
         height: 100%;
         background: rgba(0, 0, 0, 0.9);
-        z-index: 2;
+        z-index: 9999;
     }
 
     .loader-container {
@@ -46,16 +61,18 @@
 
     .wavy-image {
         animation: wavy 2s infinite linear;
-        max-width: 100px; 
+        max-width: 100px;
     }
 
     @keyframes wavy {
         0% {
             transform: translateX(0);
         }
+
         50% {
-            transform: translateX(10px); 
+            transform: translateX(10px);
         }
+
         100% {
             transform: translateX(0);
         }
@@ -88,7 +105,7 @@
                         href="/home"
                         style="{{ preg_match('/home/',Route::current()->uri) == true ? 'background: linear-gradient(45deg, #1b3c5fc9, #1B3C5F);background-size: cover;' : '' }}">
                         <i class="fa fa-tachometer" aria-hidden="true"></i>
-                        <span class="nav-link-text ms-1">Dashboard</span>
+                        <span class="nav-link-text ms-1 font-weight-bold">Dashboard</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -173,11 +190,26 @@
             <div class="container-fluid py-1 px-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white"
-                                href="javascript:;">Pages</a></li>
-                        <li class="breadcrumb-item text-sm text-white active" aria-current="page">Dashboard</li>
+                        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white">Ruang Akademik</a></li>
+                        @php
+                        $urlSegments = explode('/', request()->path());
+                        $breadcrumbPath = '';
+                        @endphp
+
+                        @foreach($urlSegments as $segment)
+                        @php
+                        $cleanedSegment = str_replace('_', ' ', $segment);
+                        $breadcrumbPath .= "/$segment";
+                        @endphp
+
+                        <li class="breadcrumb-item text-sm {{ $loop->last ? 'text-white active' : '' }}">
+                            <a href="{{ $breadcrumbPath }}" class="text-white">
+                                {{ ucfirst($cleanedSegment) }}
+                            </a>
+                        </li>
+                        @endforeach
                     </ol>
-                    <h6 class="font-weight-bolder text-white mb-0">Dashboard</h6>
+                    <h6 class="font-weight-bolder text-white mb-0">{{ ucfirst($cleanedSegment) }}</h6>
                 </nav>
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                     <ul class="navbar-nav  justify-content-end">
@@ -194,11 +226,35 @@
                 </div>
             </div>
         </nav>
+
+
         @yield('content')
+        <footer class="footer pt-3 fixed-bottom-footer">
+            <div class="container-fluid">
+                <div class="row align-items-center justify-content-lg-between">
+                    <div class="col-lg-12 mb-lg-0 mb-4">
+                        <div class="copyright text-center text-xs text-muted text-lg-end"
+                            style="color:white!important;opacity:100%!important">
+                            © <script>
+                                document.write(new Date().getFullYear())
+                            </script>,
+                            made with <i class="far fa-grin"></i> by
+                            <a class="font-weight-bolder text-white">Ruang Akademik</a>
+                            for a better SIAKAD.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
     </main>
 
+
+
     @yield('jquery')
+    <script>
+        AOS.init();
+    </script>
     <script src="http://localhost:8000/assets/js/core/popper.min.js"></script>
     <script src="http://localhost:8000/assets/js/core/bootstrap.min.js"></script>
     <script src="http://localhost:8000/assets/js/plugins/perfect-scrollbar.min.js"></script>

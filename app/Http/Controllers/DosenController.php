@@ -37,7 +37,7 @@ class DosenController extends Controller
             'NamaDosen' => $request->input('NamaDosen'),
         ];
 
-        MataKuliah::create($data);
+        Dosen::create($data);
 
         return redirect()->route('dosen.index')->with('success', 'Dosen berhasil ditambah!');
     }
