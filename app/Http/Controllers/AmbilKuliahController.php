@@ -52,20 +52,24 @@ class AmbilKuliahController extends Controller
 
     public function destroy(string $NRP, string $IDMK)
     {
+        // Check if the ambil kuliah object exists
         $ambilKuliah = DB::table('AmbilKuliah')
             ->where('NRP', $NRP)
             ->where('IDMK', $IDMK)
             ->first();
 
         if (!$ambilKuliah) {
+            // Redirect the user to an error page
             return redirect()->route('ambil_kuliah.index')->with('error', 'Ambil kuliah tidak ditemukan!');
         }
 
+        // Delete the ambil kuliah object
         DB::table('AmbilKuliah')
             ->where('NRP', $NRP)
             ->where('IDMK', $IDMK)
             ->delete();
 
+        // Redirect the user to the ambil kuliah index page
         return redirect()->route('ambil_kuliah.index')->with('success', 'Ambil kuliah berhasil dihapus!');
     }
 
@@ -91,8 +95,7 @@ class AmbilKuliahController extends Controller
 
     public function update(Request $request, $NRP, $IDMK)
     {
-        $item = DB::table('AmbilKuliah')
-            ->where('NRP', $NRP)
+        $item = AmbilKuliah::where('NRP', $NRP)
             ->where('IDMK', $IDMK)
             ->first();
 
@@ -101,12 +104,9 @@ class AmbilKuliahController extends Controller
                 'NilaiAngka' => 'required',
             ]);
 
-            DB::table('AmbilKuliah')
-                ->where('NRP', $NRP)
-                ->where('IDMK', $IDMK)
-                ->update($data);
+            $item->update($data);
 
-            return redirect()->route('ambil_kuliah.index')->with('success', 'Ambil Kuliah berhasil diedit!');
+            return redirect()->route('ambil_kuliah.index');
         } else {
         }
     }
