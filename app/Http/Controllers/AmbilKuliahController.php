@@ -94,21 +94,26 @@ class AmbilKuliahController extends Controller
 
 
     public function update(Request $request, $NRP, $IDMK)
-    {
-        $item = AmbilKuliah::where('NRP', $NRP)
+{
+    $item = DB::table('AmbilKuliah')
+        ->where('NRP', $NRP)
+        ->where('IDMK', $IDMK)
+        ->first();
+
+    if ($item) {
+        $data = $request->validate([
+            'NilaiAngka' => 'required',
+        ]);
+
+        DB::table('AmbilKuliah')
+            ->where('NRP', $NRP)
             ->where('IDMK', $IDMK)
-            ->first();
+            ->update($data);
 
-        if ($item) {
-            $data = $request->validate([
-                'NilaiAngka' => 'required',
-            ]);
-
-            $item->update($data);
-
-            return redirect()->route('ambil_kuliah.index');
-        } else {
-        }
+        return redirect()->route('ambil_kuliah.index')->with('success', 'Ambil Kuliah berhasil diedit!');
+    } else {
+        return redirect()->route('ambil_kuliah.index')->with('error', 'Ambil Kuliah tidak ditemukan!');
     }
+}
 
 }
