@@ -13,6 +13,6 @@ class AmbilKuliah extends Model
     public $incrementing = false;
     protected $keyType = 'string';
     protected $table = 'AmbilKuliah';
-    protected $primaryKey = ['NRP', 'IDMK'];
+    protected $primaryKey = ['NRP','IDMK'];
     protected $fillable = ['NRP', 'IDMK','NilaiAngka','NilaiHuruf'];
 }

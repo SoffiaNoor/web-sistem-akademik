@@ -83,7 +83,7 @@
                                 <td class="text-uppercase text-default text-xs font-weight-bolder">
                                     <div class="d-flex align-items-center">
                                         <span class="ms-3 text-xs">
-                                            {{ $mhs->IPK }}
+                                            {{ number_format($mhs->IPK, 2) }}
                                         </span>
                                     </div>
                                 </td>
