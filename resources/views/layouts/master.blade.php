@@ -141,9 +141,9 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-3 my-1 text-dark {{ preg_match('/kelas/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
-                        href="/kelas"
-                        style="{{ preg_match('/kelas/',Route::current()->uri) == true ? 'background: linear-gradient(45deg, #1b3c5fc9, #1B3C5F);background-size: cover;' : '' }}">
+                    <a class="nav-link mx-3 my-1 text-dark {{ preg_match('/tempat/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
+                        href="/tempat"
+                        style="{{ preg_match('/tempat/',Route::current()->uri) == true ? 'background: linear-gradient(45deg, #1b3c5fc9, #1B3C5F);background-size: cover;' : '' }}">
                         <i class="fas fa-map" aria-hidden="true"></i>
                         <span class="nav-link-text ms-1 font-weight-bold">Kelas Mata Kuliah</span>
                     </a>
