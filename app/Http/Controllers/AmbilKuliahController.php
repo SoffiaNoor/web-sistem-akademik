@@ -6,14 +6,18 @@ use Illuminate\Http\Request;
 use App\Models\AmbilKuliah;
 use App\Models\Mahasiswa;
 use App\Models\MataKuliah;
+
 use Illuminate\Support\Facades\DB;
+
 class AmbilKuliahController extends Controller
 {
     public function index()
     {
         $ambilKuliah = AmbilKuliah::paginate(5);
+        $mahasiswa = Mahasiswa::all();
+        $mataKuliah = MataKuliah::all();
 
-        return view("ambil_kuliah.index", compact('ambilKuliah'));
+        return view("ambil_kuliah.index", compact('ambilKuliah', 'mahasiswa', 'mataKuliah'));
     }
     public function create()
     {
@@ -22,7 +26,7 @@ class AmbilKuliahController extends Controller
         $mataKuliah = MataKuliah::all();
         $model2 = new MataKuliah();
 
-        return view("ambil_kuliah.create", compact('mahasiswa', 'model1','mataKuliah', 'model2'));
+        return view("ambil_kuliah.create", compact('mahasiswa', 'model1', 'mataKuliah', 'model2'));
     }
 
     public function show(string $NRP, string $IDMK)
@@ -33,8 +37,16 @@ class AmbilKuliahController extends Controller
         return view("ambil_kuliah.view", compact('ambilKuliah'));
     }
 
-    public function edit(AmbilKuliah $ambilKuliah)
+    public function edit($NRP, $IDMK)
     {
+        $ambilKuliah = AmbilKuliah::where('NRP', $NRP)
+            ->where('IDMK', $IDMK)
+            ->first();
+
+        if (!$ambilKuliah) {
+            return redirect()->route('ambil_kuliah.index')->with('error', 'Ambil kuliah tidak ditemukan!');
+        }
+
         return view("ambil_kuliah.update", compact('ambilKuliah'));
     }
 
@@ -66,9 +78,9 @@ class AmbilKuliahController extends Controller
         $this->validate($request, [
             'NRP' => 'required|string|max:5',
             'IDMK' => 'required|string|max:5',
-            'NilaiAngka' => 'required|numeric',
+            'NilaiAngka' => 'required|numeric|max:100|min:0',
         ]);
-    
+
         $data = [
             'NRP' => $request->input('NRP'),
             'IDMK' => $request->input('IDMK'),
@@ -80,19 +92,23 @@ class AmbilKuliahController extends Controller
         return redirect()->route('ambil_kuliah.index')->with('success', 'Ambil Kuliah berhasil ditambah!');
     }
 
-    public function update(Request $request)
-{
-    $this->validate($request, [
-        'NilaiAngka' => 'required|integer',
-        // Tambahkan validasi lain sesuai kebutuhan Anda
-    ]);
 
-    $NRP = $request->input('NRP');
-    $IDMK = $request->input('IDMK');
+    public function update(Request $request, $NRP, $IDMK)
+    {
+        $item = AmbilKuliah::where('NRP', $NRP)
+            ->where('IDMK', $IDMK)
+            ->first();
 
-    // Lakukan update berdasarkan $NRP dan $IDMK
+        if ($item) {
+            $data = $request->validate([
+                'NilaiAngka' => 'required',
+            ]);
 
-    return redirect()->route('ambil_kuliah.index')->with('success', 'Ambil Kuliah berhasil diperbarui!');
-}
+            $item->update($data);
+
+            return redirect()->route('ambil_kuliah.index');
+        } else {
+        }
+    }
 
 }

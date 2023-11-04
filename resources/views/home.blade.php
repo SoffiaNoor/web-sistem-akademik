@@ -1,7 +1,10 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container-fluid px-3">
+<div class="container-fluid px-3 pt-5">
+    @if($loggedInUser)
+    <h4 class="text-white font-weight-bolder">Selamat Datang, {{ $loggedInUser->name }}</h4>
+    @endif
     <div class="row">
         <div class="col-sm-4 mt-2" data-aos="fade-up" data-aos-delay="300" data-aos-easing="ease-in-sine">
             <div class="info-horizontal bg-gradient-danger border-radius-xl p-3">
@@ -35,8 +38,7 @@
                         {{ \App\Models\Dosen::count() }}
                     </h2>
                     <hr class="m-0" style="background-color:#ffffff;height:10px;border-radius:40px;width:50%">
-                    <a href="/dosen" class="text-light icon-move-right font-weight-bolder"
-                        style="font-style:italic">
+                    <a href="/dosen" class="text-light icon-move-right font-weight-bolder" style="font-style:italic">
                         Lihat lebih lanjut
                         <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
                     </a>
@@ -55,8 +57,7 @@
                         {{ \App\Models\MataKuliah::count() }}
                     </h2>
                     <hr class="m-0" style="background-color:#ffffff;height:10px;border-radius:40px;width:50%">
-                    <a href="/dosen" class="text-light icon-move-right font-weight-bolder"
-                        style="font-style:italic">
+                    <a href="/dosen" class="text-light icon-move-right font-weight-bolder" style="font-style:italic">
                         Lihat lebih lanjut
                         <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
                     </a>

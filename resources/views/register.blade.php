@@ -46,12 +46,14 @@
                                     <form role="form" method="POST" action="{{ route('register') }}">
                                         @csrf
                                         <div class="mb-3">
-                                            <input type="text" name="username" class="form-control form-control-lg" placeholder="Username" required>
+                                            <input type="text" name="name" class="form-control form-control-lg" placeholder="Username" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <input type="email" name="email" class="form-control form-control-lg" placeholder="Email" required>
                                         </div>
                                         <div class="mb-3">
                                             <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" required>
                                         </div>
-                                        <!-- Tambahkan kolom konfirmasi kata sandi untuk pendaftaran -->
                                         <div class="mb-3">
                                             <input type="password" name="password_confirmation" class="form-control form-control-lg" placeholder="Confirm Password" required>
                                         </div>
