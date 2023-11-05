@@ -40,6 +40,7 @@
                     <table class="table align-items-center mb-0">
                         <thead>
                             <tr>
+                                <th class="text-uppercase text-default text-xs font-weight-bolder">No.</th>
                                 <th class="text-uppercase text-default text-xs font-weight-bolder">ID</th>
                                 <th class="text-uppercase text-default text-xs font-weight-bolder">Nama Ruang</th>
                                 <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">Kapasitas</th>
@@ -49,6 +50,13 @@
                         <tbody>
                             @foreach ($Ruang as $ruangan)
                             <tr>
+                                <td class="text-uppercase text-default text-xs font-weight-bolder">
+                                    <div class="d-flex align-items-center">
+                                        <span class="ms-3 text-xs">
+                                            {{ ($Ruang->currentPage() - 1) * $Ruang->perPage() + $loop->iteration }}
+                                        </span>
+                                    </div>
+                                </td>
                                 <td class="text-uppercase text-default text-xs font-weight-bolder">
                                     <div class="d-flex align-items-center">
                                         <span class="ms-3 text-xs">
@@ -65,7 +73,7 @@
                                 </td>
                                 <td class="text-uppercase text-default text-xs font-weight-bolder">
                                     <div class="d-flex align-items-center">
-                                        <span class="ms-3 text-xs">
+                                        <span class="text-xs">
                                             {{ $ruangan->Kapasitas }}
                                         </span>
                                     </div>
@@ -96,7 +104,7 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
-                                                <div class="modal-body">
+                                                <div class="modal-body text-sm">
                                                     Apakah anda yakin menghapus Ruang <span
                                                         class="font-weight-bolder">{{$ruangan->NamaRuang}}</span>?
                                                 </div>

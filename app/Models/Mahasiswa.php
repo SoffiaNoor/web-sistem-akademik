@@ -13,5 +13,9 @@ class Mahasiswa extends Model
     protected $keyType = 'string';
     protected $table = 'Mahasiswa';
     protected $primaryKey = 'NRP';
-    protected $fillable = ['NRP', 'NamaMhs','Alamat','IDDosen','IPK', 'JenisKelamin'];
+    protected $fillable = ['NRP', 'NamaMhs', 'Alamat', 'IDDosen', 'IPK', 'JenisKelamin'];
+    public function dosenWali()
+    {
+        return $this->belongsTo(Dosen::class, 'IDDosen');
+    }
 }

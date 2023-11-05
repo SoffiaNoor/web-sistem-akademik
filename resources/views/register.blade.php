@@ -29,8 +29,8 @@
                         <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
                             <div class="card card-plain">
                                 <div class="card-header pb-0 text-start">
-                                    <h4 class="font-weight-bolder">Register</h4>
-                                    <p class="mb-0">Enter your username and password to register</p>
+                                    <h4 class="font-weight-bolder">Daftar Akun</h4>
+                                    <hr class="mt-0" style="background-color:#01353f;height:10px;border-radius:40px;width:50%;opacity:70%">
                                 </div>
                                 <div class="card-body">
                                     @if(session('success'))
@@ -46,15 +46,19 @@
                                     <form role="form" method="POST" action="{{ route('register') }}">
                                         @csrf
                                         <div class="mb-3">
+                                            <label>Username</label>
                                             <input type="text" name="name" class="form-control form-control-lg" placeholder="Username" required>
                                         </div>
                                         <div class="mb-3">
+                                            <label>Email</label>
                                             <input type="email" name="email" class="form-control form-control-lg" placeholder="Email" required>
                                         </div>
                                         <div class="mb-3">
+                                            <label>Password</label>
                                             <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" required>
                                         </div>
                                         <div class="mb-3">
+                                            <label>Password</label>
                                             <input type="password" name="password_confirmation" class="form-control form-control-lg" placeholder="Confirm Password" required>
                                         </div>
                                         <div class="text-center">

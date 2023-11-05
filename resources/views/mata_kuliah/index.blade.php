@@ -40,6 +40,7 @@
                     <table class="table align-items-center mb-0">
                         <thead>
                             <tr>
+                                <th class="text-uppercase text-default text-xs font-weight-bolder">No.</th>
                                 <th class="text-uppercase text-default text-xs font-weight-bolder">ID</th>
                                 <th class="text-uppercase text-default text-xs font-weight-bolder">Nama Mata Kuliah</th>
                                 <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">Jumlah SKS</th>
@@ -52,11 +53,18 @@
                                 <td class="text-uppercase text-default text-xs font-weight-bolder">
                                     <div class="d-flex align-items-center">
                                         <span class="ms-3 text-xs">
-                                            {{ $MK->IDMK }}
+                                            {{ ($mataKuliah->currentPage() - 1) * $mataKuliah->perPage() + $loop->iteration }}
                                         </span>
                                     </div>
                                 </td>
                                 <td class="text-uppercase text-default text-xs font-weight-bolder">
+                                    <div class="d-flex align-items-center">
+                                        <span class="ms-3 text-xs">
+                                            {{ $MK->IDMK }}
+                                        </span>
+                                    </div>
+                                </td>
+                                <td class="text-default text-xs font-weight-bolder">
                                     <div class="d-flex align-items-center">
                                         <span class="ms-3 text-xs">
                                             {{ $MK->NamaMK }}
@@ -65,7 +73,7 @@
                                 </td>
                                 <td class="text-uppercase text-default text-xs font-weight-bolder">
                                     <div class="d-flex align-items-center">
-                                        <span class="ms-3 text-xs">
+                                        <span class="text-xs">
                                             {{ $MK->SKS }}
                                         </span>
                                     </div>
@@ -96,7 +104,7 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
-                                                <div class="modal-body">
+                                                <div class="modal-body text-sm">
                                                     Apakah anda yakin menghapus Mata Kuliah <span
                                                         class="font-weight-bolder">{{$MK->NamaMK}}</span>?
                                                 </div>

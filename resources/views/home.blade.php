@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid px-3 pt-5">
     @if($loggedInUser)
-    <h4 class="text-white font-weight-bolder">Selamat Datang, {{ $loggedInUser->name }}</h4>
+    <h4 class="text-white font-weight-bolder">Selamat Datang, {{ ucfirst($loggedInUser->name) }}</h4>
     @endif
     <div class="row">
         <div class="col-sm-4 mt-2" data-aos="fade-up" data-aos-delay="300" data-aos-easing="ease-in-sine">

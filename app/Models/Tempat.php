@@ -14,5 +14,13 @@ class Tempat extends Model
     protected $keyType = 'string';
     protected $table = 'Tempat';
     protected $primaryKey = ['IDRuang','IDMK'];
-    protected $fillable = ['IDRuang','IDMK'];
+    protected $fillable = ['IDRuang','IDMK','jam_mulai','jam_selesai'];
+
+    public function tempatMK(){
+        return $this->belongsTo(MataKuliah::class,'IDMK');
+    }
+
+    public function ruang(){
+        return $this->belongsTo(Ruang::class,'IDRuang');
+    }
 }

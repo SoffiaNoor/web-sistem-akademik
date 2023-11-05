@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Mahasiswa;
+use App\Models\Dosen;
 class MahasiswaController extends Controller
 {
     public function index()
@@ -15,7 +16,11 @@ class MahasiswaController extends Controller
 
     public function create()
     {
-        return view("mahasiswa.create");
+        $mahasiswa = Mahasiswa::all();
+        $model1 = new Mahasiswa();
+        $dosen = Dosen::all();
+        $model2 = new Dosen();
+        return view("mahasiswa.create", compact('mahasiswa','model1','dosen','model2'));
     }
 
     public function show(string $NRP)
@@ -23,10 +28,10 @@ class MahasiswaController extends Controller
         $mahasiswa = Mahasiswa::where('NRP', $NRP)->first();
         return view("mahasiswa.view", compact('mahasiswa'));
     }
-
     public function edit(Mahasiswa $mahasiswa)
     {
-        return view("mahasiswa.update", compact('mahasiswa'));
+        $dosenWali = Dosen::all();
+        return view("mahasiswa.update", compact('mahasiswa', 'dosenWali'));
     }
 
     public function destroy($NRP)

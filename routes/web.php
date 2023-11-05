@@ -31,7 +31,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('ambil_kuliah/{NRP}/{IDMK}', [AmbilKuliahController::class, 'show'])->name('ambil_kuliah.show');
     Route::get('ambil_kuliah/{NRP}/{IDMK}/edit', [AmbilKuliahController::class, 'edit'])->name('ambil_kuliah.edit');
     Route::delete('ambil_kuliah/{NRP}/{IDMK}', [AmbilKuliahController::class, 'destroy'])->name('ambil_kuliah.destroy');
-    Route::put('ambil_kuliah/{NRP}/{IDMK}/edit', [AmbilKuliahController::class, 'update'])->name('ambil_kuliah.update');
+    Route::put('tempat/{IDRuang}/{IDMK}/edit', [TempatController::class, 'update'])->name('tempat.update');
+    Route::get('tempat/{IDRuang}/{IDMK}', [TempatController::class, 'show'])->name('tempat.show');
+    Route::get('tempat/{IDRuang}/{IDMK}/edit', [TempatController::class, 'edit'])->name('tempat.edit');
+    Route::delete('tempat/{IDRuang}/{IDMK}', [TempatController::class, 'destroy'])->name('tempat.destroy');
+    Route::put('tempat/{IDRuang}/{IDMK}/edit', [TempatController::class, 'update'])->name('tempat.update');
 });
 
 

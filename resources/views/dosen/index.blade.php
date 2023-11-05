@@ -40,6 +40,7 @@
                     <table class="table align-items-center mb-0">
                         <thead>
                             <tr>
+                                <th class="text-uppercase text-default text-xs font-weight-bolder">No.</th>
                                 <th class="text-uppercase text-default text-xs font-weight-bolder">ID</th>
                                 <th class="text-uppercase text-default text-xs font-weight-bolder">Nama Dosen</th>
                                 <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">Jumlah Alamat</th>
@@ -52,20 +53,27 @@
                                 <td class="text-uppercase text-default text-xs font-weight-bolder">
                                     <div class="d-flex align-items-center">
                                         <span class="ms-3 text-xs">
-                                            {{ $Dsn->IDDosen }}
+                                            {{ ($Dosen->currentPage() - 1) * $Dosen->perPage() + $loop->iteration }}
                                         </span>
                                     </div>
                                 </td>
                                 <td class="text-uppercase text-default text-xs font-weight-bolder">
+                                    <div class="d-flex align-items-center">
+                                        <span class="ms-3 text-xs">
+                                            {{ $Dsn->IDDosen }}
+                                        </span>
+                                    </div>
+                                </td>
+                                <td class="text-default text-xs font-weight-bolder">
                                     <div class="d-flex align-items-center">
                                         <span class="ms-3 text-xs">
                                             {{ $Dsn->NamaDosen }}
                                         </span>
                                     </div>
                                 </td>
-                                <td class="text-uppercase text-default text-xs font-weight-bolder">
+                                <td class="text-default text-xs font-weight-bolder">
                                     <div class="d-flex align-items-center">
-                                        <span class="ms-3 text-xs">
+                                        <span class="text-xs">
                                             {{ $Dsn->Alamat }}
                                         </span>
                                     </div>
@@ -96,7 +104,7 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
-                                                <div class="modal-body">
+                                                <div class="modal-body text-sm">
                                                     Apakah anda yakin menghapus Dosen <span
                                                         class="font-weight-bolder">{{$Dsn->NamaDosen}}</span>?
                                                 </div>

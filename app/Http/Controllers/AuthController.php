@@ -18,8 +18,9 @@ class AuthController extends Controller
     {
         if (Auth::attempt($request->only('email', 'password'))) {
             return redirect('/');
+        } else{
+            return redirect('/login')->with('error', 'Email atau Password tidak sesuai');
         }
-        return back()->withErrors(['email' => 'Login gagal.']);
     }
 
     public function showRegistrationForm()

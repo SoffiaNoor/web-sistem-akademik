@@ -40,10 +40,11 @@
                     <table class="table align-items-center mb-0">
                         <thead>
                             <tr>
+                                <th class="text-uppercase text-default text-xs font-weight-bolder">No.</th>
                                 <th class="text-uppercase text-default text-xs font-weight-bolder">NRP</th>
-                                <th class="text-uppercase text-default text-xs font-weight-bolder">Nama Mahasiswa</th>
+                                <th class="text-uppercase text-default text-xs font-weight-bolder">Mahasiswa</th>
                                 <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">Alamat</th>
-                                <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">ID Dosen Wali</th>
+                                <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">Dosen Wali</th>
                                 <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">IPK</th>
                                 <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">Jenis Kelamin</th>
                                 <th></th>
@@ -52,6 +53,13 @@
                         <tbody>
                             @foreach ($mahasiswa as $mhs)
                             <tr>
+                                <td class="text-default text-xs font-weight-bolder">
+                                    <div class="d-flex align-items-center">
+                                        <span class="ms-3 text-xs">
+                                            {{ ($mahasiswa->currentPage() - 1) * $mahasiswa->perPage() + $loop->iteration }}
+                                        </span>
+                                    </div>
+                                </td>
                                 <td class="text-uppercase text-default text-xs font-weight-bolder">
                                     <div class="d-flex align-items-center">
                                         <span class="ms-3 text-xs">
@@ -59,37 +67,37 @@
                                         </span>
                                     </div>
                                 </td>
-                                <td class="text-uppercase text-default text-xs font-weight-bolder">
+                                <td class="text-default text-xs font-weight-bolder">
                                     <div class="d-flex align-items-center">
                                         <span class="ms-3 text-xs">
                                             {{ $mhs->NamaMhs }}
                                         </span>
                                     </div>
                                 </td>
-                                <td class="text-uppercase text-default text-xs font-weight-bolder">
+                                <td class="text-default text-xs font-weight-bolder">
                                     <div class="d-flex align-items-center">
-                                        <span class="ms-3 text-xs">
+                                        <span class="text-xs">
                                             {{ $mhs->Alamat }}
                                         </span>
                                     </div>
                                 </td>
-                                <td class="text-uppercase text-default text-xs font-weight-bolder">
+                                <td class="text-default text-xs font-weight-bolder">
                                     <div class="d-flex align-items-center">
-                                        <span class="ms-3 text-xs">
-                                            {{ $mhs->IDDosen }}
+                                        <span class="text-xs">
+                                            {{ $mhs->dosenWali->NamaDosen }}
                                         </span>
                                     </div>
                                 </td>
-                                <td class="text-uppercase text-default text-xs font-weight-bolder">
+                                <td class="text-default text-xs font-weight-bolder">
                                     <div class="d-flex align-items-center">
-                                        <span class="ms-3 text-xs">
+                                        <span class="text-xs">
                                             {{ number_format($mhs->IPK, 2) }}
                                         </span>
                                     </div>
                                 </td>
-                                <td class="text-uppercase text-default text-xs font-weight-bolder">
+                                <td class="text-default text-xs font-weight-bolder">
                                     <div class="d-flex align-items-center">
-                                        <span class="ms-3 text-xs">
+                                        <span class="text-xs">
                                             {{ $mhs->JenisKelamin }}
                                         </span>
                                     </div>

@@ -6,52 +6,79 @@ use Illuminate\Http\Request;
 use App\Models\Tempat;
 use App\Models\Ruang;
 use App\Models\MataKuliah;
-
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class TempatController extends Controller
 {
     public function index()
     {
-        $Tempat = Tempat::paginate(5);
+        $tempat = Tempat::paginate(5);
 
-        return view("tempat.index", compact('Tempat'));
+        return view("tempat.index", compact('tempat'));
     }
     public function create()
     {
-        $Ruang = Ruang::all();
+        $ruang = Ruang::all();
         $model1 = new Ruang();
         $mataKuliah = MataKuliah::all();
         $model2 = new MataKuliah();
 
-        return view("tempat.create", compact('Ruang', 'model1','mataKuliah', 'model2'));
+        return view("tempat.create", compact('ruang', 'model1', 'mataKuliah', 'model2'));
     }
 
     public function show(string $IDRuang, string $IDMK)
     {
-        $Tempat = Tempat::where('IDRuang', $IDRuang)
-                                ->where('IDMK', $IDMK)
-                                ->first();
-        return view("tempat.view", compact('Tempat'));
-    }
-    public function edit(Tempat $Tempat)
-    {
-        return view("tempat.update", compact('Tempat'));
-    }
+        $tempat = Tempat::where('IDRuang', $IDRuang)
+            ->where('IDMK', $IDMK)
+            ->first();
 
-    public function destroy($IDRuang, $IDMK)
-    {
-        // Gunakan metode where untuk mencocokkan kedua primary key
-        $Tempat = Tempat::where('IDRuang', $IDRuang)
-                                ->where('IDMK', $IDMK)
-                                ->first();
+        $jam_selesai_from_database = $tempat->jam_selesai;
+        $jam_mulai_from_database = $tempat->jam_mulai;
+        $time_as_carbon = Carbon::parse($jam_selesai_from_database);
+        $time_as_carbon_2 = Carbon::parse($jam_mulai_from_database);
+        $formatted_time_1 = $time_as_carbon->format('H:i');
+        $formatted_time_2 = $time_as_carbon_2->format('H:i');
 
-        if (!$Tempat) {
-            return redirect()->route('ruang.index')->with('error', 'Kelas mata kuliah tidak ditemukan!');
+        return view("tempat.view", compact('tempat','formatted_time_1','formatted_time_2'));
+    }
+    public function edit($IDRuang, $IDMK)
+    {
+        $tempat = Tempat::where('IDRuang', $IDRuang)
+            ->where('IDMK', $IDMK)
+            ->first();
+
+        $jam_selesai_from_database = $tempat->jam_selesai;
+        $jam_mulai_from_database = $tempat->jam_mulai;
+        $time_as_carbon = Carbon::parse($jam_selesai_from_database);
+        $time_as_carbon_2 = Carbon::parse($jam_mulai_from_database);
+        $formatted_time_1 = $time_as_carbon->format('H:i');
+        $formatted_time_2 = $time_as_carbon_2->format('H:i');
+
+        if (!$tempat) {
+            return redirect()->route('tempat.index')->with('error', 'Tempat tidak ditemukan!');
         }
 
-        $Tempat->delete();
+        return view("tempat.update", compact('tempat', 'formatted_time_1', 'formatted_time_2'));
+    }
 
-        return redirect()->route('ruang.index')->with('success', 'Kelas mata kuliah berhasil dihapus!');
+    public function destroy(string $IDRuang, string $IDMK)
+    {
+        $tempat = DB::table('Tempat')
+            ->where('IDRuang', $IDRuang)
+            ->where('IDMK', $IDMK)
+            ->first();
+
+        if (!$tempat) {
+            return redirect()->route('tempat.index')->with('error', 'Kelas Mata kuliah tidak ditemukan!');
+        }
+
+        DB::table('Tempat')
+            ->where('IDRuang', $IDRuang)
+            ->where('IDMK', $IDMK)
+            ->delete();
+
+        return redirect()->route('tempat.index')->with('success', 'Kelas Mata Kuliah berhasil dihapus!');
     }
 
     public function store(Request $request)
@@ -59,11 +86,15 @@ class TempatController extends Controller
         $this->validate($request, [
             'IDRuang' => 'required|string|max:5',
             'IDMK' => 'required|string|max:5',
+            'jam_mulai' => 'required|date_format:H:i',
+            'jam_selesai' => 'required|date_format:H:i',
         ]);
-    
+
         $data = [
             'IDRuang' => $request->input('IDRuang'),
             'IDMK' => $request->input('IDMK'),
+            'jam_mulai' => $request->input('jam_mulai'),
+            'jam_selesai' => $request->input('jam_selesai'),
         ];
 
         Tempat::create($data);
@@ -71,5 +102,28 @@ class TempatController extends Controller
         return redirect()->route('tempat.index')->with('success', 'Kelas mata kuliah berhasil ditambah!');
     }
 
+    public function update(Request $request, $IDRuang, $IDMK)
+    {
+        $item = DB::table('Tempat')
+            ->where('IDRuang', $IDRuang)
+            ->where('IDMK', $IDMK)
+            ->first();
+
+        if ($item) {
+            $data = $request->validate([
+                'jam_mulai' => 'required',
+                'jam_selesai' => 'required',
+            ]);
+
+            DB::table('Tempat')
+                ->where('IDRuang', $IDRuang)
+                ->where('IDMK', $IDMK)
+                ->update($data);
+
+            return redirect()->route('tempat.index')->with('success', 'Tempat berhasil diedit!');
+        } else {
+            return redirect()->route('tempat.index')->with('error', 'Tempat tidak ditemukan!');
+        }
+    }
 
 }
