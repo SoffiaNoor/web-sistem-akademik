@@ -58,18 +58,22 @@ class MahasiswaController extends Controller
             'JenisKelamin' => 'required|string',
         ]);
 
-        $data = [
-            'NRP' => $request->input('NRP'),
-            'NamaMhs' => $request->input('NamaMhs'),
-            'Alamat' => $request->input('Alamat'),
-            'IDDosen' => $request->input('IDDosen'),
-            'IPK' => $request->input('IPK'),
-            'JenisKelamin' => $request->input('JenisKelamin')
-        ];
-
-        Mahasiswa::create($data);
-
-        return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa berhasil ditambah!');
+        try {
+            $data = [
+                'NRP' => $request->input('NRP'),
+                'NamaMhs' => $request->input('NamaMhs'),
+                'Alamat' => $request->input('Alamat'),
+                'IDDosen' => $request->input('IDDosen'),
+                'IPK' => $request->input('IPK'),
+                'JenisKelamin' => $request->input('JenisKelamin')
+            ];
+    
+            Mahasiswa::create($data);
+    
+            return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa berhasil ditambah!');
+        } catch (\Exception $e) {
+            return redirect()->route('mahasiswa.create')->with('error', 'Gagal input Mahasiswa. Pastikan data yang Anda masukkan benar.');
+        }
     }
 
     public function update(Request $request, Mahasiswa $mahasiswa)

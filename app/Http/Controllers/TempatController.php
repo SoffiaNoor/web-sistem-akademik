@@ -89,17 +89,21 @@ class TempatController extends Controller
             'jam_mulai' => 'required|date_format:H:i',
             'jam_selesai' => 'required|date_format:H:i',
         ]);
-
-        $data = [
-            'IDRuang' => $request->input('IDRuang'),
-            'IDMK' => $request->input('IDMK'),
-            'jam_mulai' => $request->input('jam_mulai'),
-            'jam_selesai' => $request->input('jam_selesai'),
-        ];
-
-        Tempat::create($data);
-
-        return redirect()->route('tempat.index')->with('success', 'Kelas mata kuliah berhasil ditambah!');
+        try {
+            $data = [
+                'IDRuang' => $request->input('IDRuang'),
+                'IDMK' => $request->input('IDMK'),
+                'jam_mulai' => $request->input('jam_mulai'),
+                'jam_selesai' => $request->input('jam_selesai'),
+            ];
+    
+            Tempat::create($data);
+    
+            return redirect()->route('tempat.index')->with('success', 'Kelas Mata Kuliah berhasil ditambah!');
+        } catch (\Exception $e) {
+            return redirect()->route('tempat.create')->with('error', 'Gagal input Kelas Mata Kuliah. Pastikan data yang Anda masukkan benar.');
+        }
+        
     }
 
     public function update(Request $request, $IDRuang, $IDMK)

@@ -80,16 +80,20 @@ class AmbilKuliahController extends Controller
             'IDMK' => 'required|string|max:5',
             'NilaiAngka' => 'required|numeric|max:100|min:0',
         ]);
-
-        $data = [
-            'NRP' => $request->input('NRP'),
-            'IDMK' => $request->input('IDMK'),
-            'NilaiAngka' => $request->input('NilaiAngka'),
-        ];
-
-        AmbilKuliah::create($data);
-
-        return redirect()->route('ambil_kuliah.index')->with('success', 'Ambil Kuliah berhasil ditambah!');
+        try {
+            $data = [
+                'NRP' => $request->input('NRP'),
+                'IDMK' => $request->input('IDMK'),
+                'NilaiAngka' => $request->input('NilaiAngka'),
+            ];
+    
+            AmbilKuliah::create($data);
+    
+            return redirect()->route('ambil_kuliah.index')->with('success', 'Ambil Mata Kuliah berhasil ditambah!');
+        } catch (\Exception $e) {
+            return redirect()->route('ambil_kuliah.create')->with('error', 'Gagal input Ambil Mata Kuliah. Pastikan data yang Anda masukkan benar.');
+        }
+        
     }
 
 

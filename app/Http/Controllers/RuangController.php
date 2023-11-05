@@ -32,16 +32,21 @@ class RuangController extends Controller
             'NamaRuang' => 'required|string',
             'Kapasitas'=> 'required|integer',
         ]);
-
-        $data = [
-            'IDRuang' => $request->input('IDRuang'),
-            'NamaRuang' => $request->input('NamaRuang'),
-            'Kapasitas' => $request->input('Kapasitas'),
-        ];
-
-        Ruang::create($data);
-
-        return redirect()->route('ruang.index')->with('success', 'Ruang berhasil ditambah!');
+        
+        try {
+            $data = [
+                'IDRuang' => $request->input('IDRuang'),
+                'NamaRuang' => $request->input('NamaRuang'),
+                'Kapasitas' => $request->input('Kapasitas'),
+            ];
+    
+            Ruang::create($data);
+    
+            return redirect()->route('ruang.index')->with('success', 'Ruang berhasil ditambah!');
+        } catch (\Exception $e) {
+            return redirect()->route('ruang.create')->with('error', 'Gagal input Ruang. Pastikan data yang Anda masukkan benar.');
+        }
+        
     }
 
     public function update(Request $request, Ruang $Ruang)

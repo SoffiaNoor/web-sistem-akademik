@@ -33,15 +33,19 @@ class DosenController extends Controller
             'Alamat' => 'required|string',
         ]);
 
-        $data = [
-            'IDDosen' => $request->input('IDDosen'),
-            'NamaDosen' => $request->input('NamaDosen'),
-            'Alamat' => $request->input('Alamat'),
-        ];
-
-        Dosen::create($data);
-
-        return redirect()->route('dosen.index')->with('success', 'Dosen berhasil ditambah!');
+        try {
+            $data = [
+                'IDDosen' => $request->input('IDDosen'),
+                'NamaDosen' => $request->input('NamaDosen'),
+                'Alamat' => $request->input('Alamat'),
+            ];
+    
+            Dosen::create($data);
+    
+            return redirect()->route('dosen.index')->with('success', 'Dosen berhasil ditambah!');
+        } catch (\Exception $e) {
+            return redirect()->route('dosen.create')->with('error', 'Gagal input Dosen. Pastikan data yang Anda masukkan benar.');
+        }
     }
 
     public function update(Request $request, Dosen $Dosen)

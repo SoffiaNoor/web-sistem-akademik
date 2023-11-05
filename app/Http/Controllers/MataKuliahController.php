@@ -31,15 +31,18 @@ class MataKuliahController extends Controller
             'IDMK' => 'required|max:5|string',
             'NamaMK' => 'required|string',
         ]);
-
-        $data = [
-            'IDMK' => $request->input('IDMK'),
-            'NamaMK' => $request->input('NamaMK'),
-        ];
-
-        MataKuliah::create($data);
-
-        return redirect()->route('mata_kuliah.index')->with('success', 'Mata Kuliah berhasil ditambah!');
+        try {
+            $data = [
+                'IDMK' => $request->input('IDMK'),
+                'NamaMK' => $request->input('NamaMK'),
+            ];
+    
+            MataKuliah::create($data);
+    
+            return redirect()->route('mata_kuliah.index')->with('success', 'Mata Kuliah berhasil ditambah!');
+        } catch (\Exception $e) {
+            return redirect()->route('mata_kuliah.create')->with('error', 'Gagal input Mata Kuliah. Pastikan data yang Anda masukkan benar.');
+        }
     }
 
     public function update(Request $request, MataKuliah $mataKuliah)
