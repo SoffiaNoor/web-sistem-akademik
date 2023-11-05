@@ -19,7 +19,7 @@
                                     <div class="form-group">
                                         <label>IDDosen</label>
                                         <input type="text" class="form-control" id="exampleFormControlInput1"
-                                            value="{{$Dosen->IDDosen}}" disabled name="IDdosen">
+                                            value="{{$Dosen->IDDosen}}" disabled name="IDDosen">
                                     </div>
                                 </div>
                             </div>

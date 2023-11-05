@@ -21,7 +21,7 @@
                             <div class="form-group">
                                 <label>Tempat</label>
                                 <input type="text" class="form-control" id="exampleFormControlInput1"
-                                    value="{{ $tempat->ruang->NamaRuang }}" name="IDRuang">
+                                    value="{{ $tempat->ruang->NamaRuang }}" name="IDRuang" disabled>
                             </div>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                             <div class="form-group">
                                 <label>Nama MK</label>
                                 <input type="text" class="form-control" id="exampleFormControlInput1"
-                                    value="{{ $tempat->tempatMK->NamaMK }}" name="IDMK">
+                                    value="{{ $tempat->tempatMK->NamaMK }}" name="IDMK" disabled>
                             </div>
                         </div>
                     </div>

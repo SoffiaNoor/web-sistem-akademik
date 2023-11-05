@@ -30,11 +30,13 @@ class RuangController extends Controller
         $this->validate($request, [
             'IDRuang' => 'required|max:5|string',
             'NamaRuang' => 'required|string',
+            'Kapasitas'=> 'required|integer',
         ]);
 
         $data = [
             'IDRuang' => $request->input('IDRuang'),
             'NamaRuang' => $request->input('NamaRuang'),
+            'Kapasitas' => $request->input('Kapasitas'),
         ];
 
         Ruang::create($data);

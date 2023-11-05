@@ -30,11 +30,13 @@ class DosenController extends Controller
         $this->validate($request, [
             'IDDosen' => 'required|max:5|string',
             'NamaDosen' => 'required|string',
+            'Alamat' => 'required|string',
         ]);
 
         $data = [
             'IDDosen' => $request->input('IDDosen'),
             'NamaDosen' => $request->input('NamaDosen'),
+            'Alamat' => $request->input('Alamat'),
         ];
 
         Dosen::create($data);
@@ -46,7 +48,7 @@ class DosenController extends Controller
     {
         $this->validate($request, [
             'NamaDosen' => 'required|string',
-            'Alamat' => 'required|integer',
+            'Alamat' => 'required|string',
         ]);
 
         $Dosen->update($request->all());

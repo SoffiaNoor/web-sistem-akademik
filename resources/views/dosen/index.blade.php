@@ -43,7 +43,7 @@
                                 <th class="text-uppercase text-default text-xs font-weight-bolder">No.</th>
                                 <th class="text-uppercase text-default text-xs font-weight-bolder">ID</th>
                                 <th class="text-uppercase text-default text-xs font-weight-bolder">Nama Dosen</th>
-                                <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">Jumlah Alamat</th>
+                                <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">Alamat</th>
                                 <th></th>
                             </tr>
                         </thead>

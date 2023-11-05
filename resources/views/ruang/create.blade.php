@@ -29,6 +29,14 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Kapasitas</label>
+                                        <input type="number" class="form-control" id="Kapasitas" name="Kapasitas" required>
+                                    </div>
+                                </div>
+                            </div>
                             
                             <div class="row">
                                 <div class="col-sm-6 pt-2">
