@@ -38,4 +38,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('tempat/{IDRuang}/{IDMK}/edit', [TempatController::class, 'update'])->name('tempat.update');
 });
 
+Route::get('/404', function () {
+    return view('errors.404');
+})->name('custom.404');
 
