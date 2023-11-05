@@ -21,7 +21,7 @@
                             <div class="form-group">
                                 <label>NRP</label>
                                 <input type="text" class="form-control" id="exampleFormControlInput1"
-                                    value="{{ $ambilKuliah->NRP }}" name="NRP">
+                                    value="{{ $ambilKuliah->NRP }}" name="NRP" disabled>
                             </div>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                             <div class="form-group">
                                 <label>IDMK</label>
                                 <input type="text" class="form-control" id="exampleFormControlInput1"
-                                    value="{{ $ambilKuliah->IDMK }}" name="IDMK">
+                                    value="{{ $ambilKuliah->IDMK }}" name="IDMK" disabled>
                             </div>
                         </div>
                     </div>
