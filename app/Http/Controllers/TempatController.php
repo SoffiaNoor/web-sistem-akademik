@@ -13,7 +13,7 @@ class TempatController extends Controller
 {
     public function index()
     {
-        $tempat = Tempat::paginate(5);
+        $tempat = Tempat::paginate(8);
 
         return view("tempat.index", compact('tempat'));
     }

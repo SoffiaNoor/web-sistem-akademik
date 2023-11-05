@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container-fluid px-3 pt-5">
+<div class="container-fluid px-3 pt-1">
     @if($loggedInUser)
     <h4 class="text-white font-weight-bolder">Selamat Datang, {{ ucfirst($loggedInUser->name) }}</h4>
     @endif

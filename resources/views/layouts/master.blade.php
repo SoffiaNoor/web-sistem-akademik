@@ -59,29 +59,29 @@
         z-index: 9999;
     }
 
-    .wavy-image {
-        animation: wavy 2s infinite linear;
+    .swing-animation {
+        animation: swing 2s infinite ease-in-out;
         max-width: 100px;
     }
 
-    @keyframes wavy {
+    @keyframes swing {
         0% {
-            transform: translateX(0);
+            transform: rotate(0deg);
         }
 
         50% {
-            transform: translateX(10px);
+            transform: rotate(15deg);
         }
 
         100% {
-            transform: translateX(0);
+            transform: rotate(0deg);
         }
     }
 </style>
 
 <body class="g-sidenav-show bg-gray-100">
     <div class="loader-container">
-        <img src="http://localhost:8000/assets/images/RUNGKAD3.png" class="wavy-image" alt="Loading..." />
+        <img src="http://localhost:8000/assets/images/RUNGKAD3.png" class="swing-animation" alt="Loading..." />
     </div>
     <div class="min-height-300 position-absolute w-100"></div>
     <span class="mask bg-gradient-warning opacity-10"
@@ -217,9 +217,22 @@
                     @endif
                 </nav>
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                    <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                        <div class="input-group">
+                            <span class="input-group-text text-body"><i class="fas fa-search"
+                                    aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" id="searchInput" placeholder="Type here...">
+                        </div>
+                    </div>
                     <ul class="navbar-nav  justify-content-end">
+                        <li class="nav-item d-flex align-items-center">
+                            <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
+                                <i class="fa fa-user me-sm-1"></i>
+                                <span class="d-sm-inline d-none">{{ ucfirst($loggedInUser->name) }}</span>
+                            </a>
+                        </li>
                         <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-                            <a href="javascript:;" class a nav-link text-white p-0" id="iconNavbarSidenav">
+                            <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
                                 <div class="sidenav-toggler-inner">
                                     <i class="sidenav-toggler-line bg-white"></i>
                                     <i class="sidenav-toggler-line bg-white"></i>
@@ -288,6 +301,25 @@
         integrity="sha512-euoFGowhlaLqXsPWQ48qSkBSCFs3DPRyiwVu3FjR96cMPx+Fr+gpWRhIafcHwqwCqWS42RZhIudOvEI+Ckf6MA=="
         data-cf-beacon='{"rayId":"81f9fc41bb863e60","version":"2023.10.0","token":"1b7cbb72744b40c580f8633c6b62637e"}'
         crossorigin="anonymous"></script>
+
+    <script>
+        const searchInput = document.getElementById("searchInput");
+            const tableRows = document.querySelectorAll("table tbody tr");
+        
+            searchInput.addEventListener("input", function () {
+                const searchTerm = searchInput.value.trim().toLowerCase();
+        
+                tableRows.forEach(row => {
+                    const rowData = row.textContent.toLowerCase();
+        
+                    if (rowData.includes(searchTerm)) {
+                        row.style.display = "table-row";
+                    } else {
+                        row.style.display = "none";
+                    }
+                });
+            });
+    </script>
 </body>
 
 </html>

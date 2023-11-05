@@ -9,7 +9,7 @@ class MahasiswaController extends Controller
 {
     public function index()
     {
-        $mahasiswa = Mahasiswa::paginate(5);
+        $mahasiswa = Mahasiswa::paginate(8);
 
         return view("mahasiswa.index", compact('mahasiswa'));
     }

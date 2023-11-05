@@ -10,6 +10,13 @@ use App\Http\Controllers\TempatController;
 use App\Http\Controllers\AmbilKuliahController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Auth;
+
+View::composer('layouts.master', function ($view) {
+    $loggedInUser = Auth::user();
+    $view->with('loggedInUser', $loggedInUser);
+});
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
