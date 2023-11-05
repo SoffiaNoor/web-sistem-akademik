@@ -156,7 +156,7 @@
                         <span class="nav-link-text ms-1 font-weight-bold">Ambil Mata Kuliah</span>
                     </a>
                 </li>
-                <h6 class="ps-4 my-2 text-uppercase text-xs font-weight-bolder opacity-6">Histori</h6>
+                <h6 class="ps-4 my-2 text-uppercase text-xs font-weight-bolder opacity-6">Audit</h6>
                 <li class="nav-item">
                     <a class="nav-link mx-3 my-1 text-dark {{ preg_match('/audit_mata_kuliah/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
                         href="/audit_mata_kuliah"

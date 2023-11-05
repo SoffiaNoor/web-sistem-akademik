@@ -7,7 +7,7 @@
             <div class="card p-3">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h3 class="px-3">Histori Mata Kuliah
+                        <h3 class="px-3">Audit Mata Kuliah
                         </h3>
                         <hr class="ms-3 mt-0" style="background-color:#01353f;height:10px;border-radius:40px;width:50%">
                     </div>

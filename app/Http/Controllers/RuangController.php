@@ -9,7 +9,7 @@ class RuangController extends Controller
 {
     public function index()
     {
-        $Ruang = Ruang::paginate(8);
+        $Ruang = Ruang::paginate(5);
 
         return view("ruang.index", compact('Ruang'));
     }

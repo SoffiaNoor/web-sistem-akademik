@@ -13,7 +13,7 @@ class AmbilKuliahController extends Controller
 {
     public function index()
     {
-        $ambilKuliah = AmbilKuliah::paginate(8);
+        $ambilKuliah = AmbilKuliah::paginate(5);
         $mahasiswa = Mahasiswa::all();
         $mataKuliah = MataKuliah::all();
 

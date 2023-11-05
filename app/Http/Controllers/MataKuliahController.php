@@ -9,7 +9,7 @@ class MataKuliahController extends Controller
 {
     public function index()
     {
-        $mataKuliah = MataKuliah::paginate(8);
+        $mataKuliah = MataKuliah::paginate(5);
 
         return view("mata_kuliah.index", compact('mataKuliah'));
     }

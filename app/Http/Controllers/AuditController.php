@@ -8,7 +8,7 @@ use App\Models\Audit;
 class AuditController extends Controller
 {
     public function index(){
-        $audit = Audit::paginate(10);
+        $audit = Audit::paginate(5);
 
         return view("audit.index", compact('audit'));
     }
