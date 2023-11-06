@@ -28,18 +28,18 @@
                     <div class="row">
                         <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
                             <div class="card card-plain">
-                                    <div class="row">
+                                <div class="row">
                                     <div class="col-sm-2" style="align-self: center;">
-                                        <div><a class="btn btn-secondary m-0" href="/"
-                                                    style="border-radius:100%">
-                                                    <i class="fa fa-arrow-left m-0 p-0"></i>
-                                                </a>
+                                        <div><a class="btn btn-secondary m-0" href="/" style="border-radius:100%;padding-top:1rem;padding-bottom:1rem;background: linear-gradient(45deg, #1b3c5fc9, #1B3C5F)">
+                                                <i class="fa fa-arrow-left m-0 p-0"></i>
+                                            </a>
                                         </div>
                                     </div>
                                     <div class="col-sm-10">
                                         <div class="card-header pb-0 text-start">
                                             <h4 class="font-weight-bolder">Daftar Akun</h4>
-                                            <hr class="mt-0" style="background-color:#01353f;height:10px;border-radius:40px;width:50%;opacity:70%">
+                                            <hr class="mt-0"
+                                                style="background: linear-gradient(45deg, #1b3c5fc9, #1B3C5F);height:10px;border-radius:40px;width:50%;opacity:100%">
                                         </div>
                                     </div>
                                 </div>
@@ -58,22 +58,28 @@
                                         @csrf
                                         <div class="mb-3">
                                             <label>Username</label>
-                                            <input type="text" name="name" class="form-control form-control-lg" placeholder="Username" required>
+                                            <input type="text" name="name" class="form-control form-control-lg"
+                                                placeholder="Username" required>
                                         </div>
                                         <div class="mb-3">
                                             <label>Email</label>
-                                            <input type="email" name="email" class="form-control form-control-lg" placeholder="Email" required>
+                                            <input type="email" name="email" class="form-control form-control-lg"
+                                                placeholder="Email" required>
                                         </div>
                                         <div class="mb-3">
                                             <label>Password</label>
-                                            <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" required>
+                                            <input type="password" name="password" class="form-control form-control-lg"
+                                                placeholder="Password" required>
                                         </div>
                                         <div class="mb-3">
                                             <label>Password</label>
-                                            <input type="password" name="password_confirmation" class="form-control form-control-lg" placeholder="Confirm Password" required>
+                                            <input type="password" name="password_confirmation"
+                                                class="form-control form-control-lg" placeholder="Confirm Password"
+                                                required>
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0" style="background: linear-gradient(45deg, #1b3c5fc9, #1B3C5F);background-size: cover;">Register</button>
+                                            <button type="submit" class="btn btn-lg btn-primary btn-lg w-100 mt-4 mb-0"
+                                                style="background: linear-gradient(45deg, #1b3c5fc9, #1B3C5F);background-size: cover;">Register</button>
                                         </div>
                                     </form>
 
