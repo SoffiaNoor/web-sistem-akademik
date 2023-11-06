@@ -28,9 +28,20 @@
                     <div class="row">
                         <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
                             <div class="card card-plain">
-                                <div class="card-header pb-0 text-start">
-                                    <h4 class="font-weight-bolder">Daftar Akun</h4>
-                                    <hr class="mt-0" style="background-color:#01353f;height:10px;border-radius:40px;width:50%;opacity:70%">
+                                    <div class="row">
+                                    <div class="col-sm-2" style="align-self: center;">
+                                        <div><a class="btn btn-secondary m-0" href="/"
+                                                    style="border-radius:100%">
+                                                    <i class="fa fa-arrow-left m-0 p-0"></i>
+                                                </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <div class="card-header pb-0 text-start">
+                                            <h4 class="font-weight-bolder">Daftar Akun</h4>
+                                            <hr class="mt-0" style="background-color:#01353f;height:10px;border-radius:40px;width:50%;opacity:70%">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="card-body">
                                     @if(session('success'))

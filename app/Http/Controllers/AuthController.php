@@ -30,13 +30,25 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-        ]);
+        {
+            try {
+                $data = [
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => bcrypt($request->password),
+                ];
+        
+                User::create($data);
+        
+                return redirect()->route('register')->with('success', 'Account created successfully.');
+        
+            } catch (\Exception $e) {
+        
+                return redirect()->route('register')->with('error', 'Gagal create account. Account sudah ada.');
+        
+            }
+        }
 
-        return redirect('/')->with('success', 'Account created successfully.');
     }
 
     public function logout()
