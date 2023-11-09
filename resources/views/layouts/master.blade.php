@@ -165,6 +165,15 @@
                         <span class="nav-link-text ms-1 font-weight-bold">Mata Kuliah</span>
                     </a>
                 </li>
+                <h6 class="ps-4 my-2 text-uppercase text-xs font-weight-bolder opacity-6">User Configuration</h6>
+                <li class="nav-item">
+                    <a class="nav-link mx-3 my-1 text-dark {{ preg_match('/user/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
+                        href="/user"
+                        style="{{ preg_match('/user/',Route::current()->uri) == true ? 'background: linear-gradient(45deg, #1b3c5fc9, #1B3C5F);background-size: cover;' : '' }}">
+                        <i class="fa fa-save" aria-hidden="true"></i>
+                        <span class="nav-link-text ms-1 font-weight-bold">List User</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <div class="sidenav-footer mx-3 ">

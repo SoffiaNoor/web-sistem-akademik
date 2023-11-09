@@ -12,6 +12,7 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\UserController;
 
 View::composer('layouts.master', function ($view) {
     $loggedInUser = Auth::user();
@@ -44,6 +45,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('tempat/{IDRuang}/{IDMK}/edit', [TempatController::class, 'edit'])->name('tempat.edit');
     Route::delete('tempat/{IDRuang}/{IDMK}', [TempatController::class, 'destroy'])->name('tempat.destroy');
     Route::put('tempat/{IDRuang}/{IDMK}/edit', [TempatController::class, 'update'])->name('tempat.update');
+    Route::resource('/user', UserController::class);
+    Route::post('/user/{id}', [UserController::class, 'changePassword'])->name('user.changePassword');
 });
 
 Route::get('/404', function () {
