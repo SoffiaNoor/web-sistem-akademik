@@ -31,6 +31,11 @@
                         {{ session('success') }}
                     </div>
                     @endif
+                    @if(session('error'))
+                    <div class="alert alert-danger shadow border-radius-xl text-white font-weight-bolder">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                     <table class="table align-items-center mb-0">
                         <thead>
                             <tr>

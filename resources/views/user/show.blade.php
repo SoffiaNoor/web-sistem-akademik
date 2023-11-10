@@ -40,6 +40,11 @@
                     </div>
                     <p class="text-uppercase text-sm font-weight-bolder">Change Password</p>
                     <hr style="background-color:#01353f;height:10px;border-radius:40px;width:50%">
+                    @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                     <form action="{{ route('user.changePassword', $users->id) }}" method="POST">
                         @csrf
                         <div class="row">

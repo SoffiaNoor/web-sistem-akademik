@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Exception;
 
 
 class UserController extends Controller
@@ -35,11 +37,13 @@ class UserController extends Controller
     }
 
     public function changePassword(Request $request, $id)
-    {
-        $user = User::find($id);
+{
+    try {
+        
+        $user = User::findOrFail($id);
 
-        if (!$user) {
-            return redirect()->route('user.index')->with('error', 'User tidak ditemukan!');
+        if (!Hash::check($request->input('current_password'), $user->password)) {
+            return redirect()->route('user.index')->with('error', 'Password saat ini tidak sesuai dengan yang terdaftar. Harap periksa kembali.')->withInput();
         }
 
         $user->update([
@@ -47,5 +51,10 @@ class UserController extends Controller
         ]);
 
         return redirect()->route('user.index')->with('success', 'Password berhasil diubah!');
+    } catch (ModelNotFoundException $e) {
+        return redirect()->route('user.index')->with('error', 'User tidak ditemukan!');
+    } catch (Exception $e) {
+        return redirect()->route('user.index')->with('error', 'Terjadi kesalahan saat mengganti password. Silakan coba lagi.');
     }
+}
 }
