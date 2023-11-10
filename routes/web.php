@@ -27,7 +27,7 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index']);
     Route::resource('/mata_kuliah', MataKuliahController::class);
-    Route::resource('/audit_mata_kuliah', AuditController::class);
+    Route::resource('/histori_mk', AuditController::class);
     Route::resource('/dosen', DosenController::class);
     Route::resource('/ruang', RuangController::class);
     Route::resource('/tempat', TempatController::class);
@@ -47,7 +47,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('tempat/{IDRuang}/{IDMK}/edit', [TempatController::class, 'update'])->name('tempat.update');
     Route::resource('/user', UserController::class);
     Route::post('/user/{id}', [UserController::class, 'changePassword'])->name('user.changePassword');
-    Route::get('/audit', [AuditController::class, 'showAudit'])->name('audit.showAudit');
+    Route::get('/histori_mk', [AuditController::class, 'showAudit'])->name('audit.showAudit');
 });
 
 Route::get('/404', function () {

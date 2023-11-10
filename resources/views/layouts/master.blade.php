@@ -80,9 +80,9 @@
 </style>
 
 <body class="g-sidenav-show bg-gray-100">
-    <div class="loader-container">
+    {{-- <div class="loader-container">
         <img src="http://localhost:8000/assets/images/RUNGKAD3.png" class="swing-animation" alt="Loading..." />
-    </div>
+    </div> --}}
     <div class="min-height-300 position-absolute w-100"></div>
     <span class="mask bg-gradient-warning opacity-10"
         style="background: linear-gradient(45deg, #1b3c5fc9, #1B3C5F);background-size: cover;"></span>
@@ -156,13 +156,13 @@
                         <span class="nav-link-text ms-1 font-weight-bold">Ambil Mata Kuliah</span>
                     </a>
                 </li>
-                <h6 class="ps-4 my-2 text-uppercase text-xs font-weight-bolder opacity-6">Audit</h6>
+                <h6 class="ps-4 my-2 text-uppercase text-xs font-weight-bolder opacity-6">Histori</h6>
                 <li class="nav-item">
-                    <a class="nav-link mx-3 my-1 text-dark {{ preg_match('/audit_mata_kuliah/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
-                        href="/audit_mata_kuliah"
-                        style="{{ preg_match('/audit_mata_kuliah/',Route::current()->uri) == true ? 'background: linear-gradient(45deg, #1b3c5fc9, #1B3C5F);background-size: cover;' : '' }}">
+                    <a class="nav-link mx-3 my-1 text-dark {{ preg_match('/histori_mk/',Route::current()->uri) == true ? 'bg-gradient-secondary shadow border-radius-xl mx-3 my-1 text-white font-weight-bolder' : '' }}"
+                        href="/histori_mk"
+                        style="{{ preg_match('/histori_mk/',Route::current()->uri) == true ? 'background: linear-gradient(45deg, #1b3c5fc9, #1B3C5F);background-size: cover;' : '' }}">
                         <i class="fa fa-save" aria-hidden="true"></i>
-                        <span class="nav-link-text ms-1 font-weight-bold">Mata Kuliah</span>
+                        <span class="nav-link-text ms-1 font-weight-bold">Audit Mata Kuliah</span>
                     </a>
                 </li>
                 <h6 class="ps-4 my-2 text-uppercase text-xs font-weight-bolder opacity-6">User Configuration</h6>
@@ -297,11 +297,11 @@
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
     </script>
-    <script>
+    {{-- <script>
         window.addEventListener('load', function () {
         document.querySelector('.loader-container').style.display = 'none';
     });
-    </script>
+    </script> --}}
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
     <script src="../assets/js/argon-dashboard.min.js?v=2.0.4"></script>

@@ -7,7 +7,8 @@ use App\Models\Audit;
 
 class AuditController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $audit = Audit::paginate(5);
 
         return view("audit.index", compact('audit'));
@@ -15,13 +16,14 @@ class AuditController extends Controller
 
     public function showAudit(Request $request)
     {
-        $sortBy = $request->get('sort', 'default_column');
+        $sortBy = $request->get('sort', 'date');
         $order = $request->get('order', 'asc');
-
+    
         $audit = Audit::orderBy($sortBy, $order)->paginate(10);
-
+    
         return view('audit.index', compact('audit', 'sortBy', 'order'));
     }
+
 
 }
 

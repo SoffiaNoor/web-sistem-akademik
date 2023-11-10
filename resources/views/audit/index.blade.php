@@ -24,15 +24,13 @@
                                 </th>
                                 <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">Nama MK Old</th>
                                 <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">
-    <a href="{{ route('audit.showAudit', ['sort' => 'date', 'order' => $order === 'asc' ? 'desc' : 'asc']) }}">
-        Date
-        @if($sortBy === 'date')
-            <i class="fa fa-sort-{{ $order === 'asc' ? 'asc' : 'desc' }}"></i>
-        @endif
-    </a>
-</th>
-
-
+                                    <a href="{{ route('audit.showAudit', ['sort' => 'date', 'order' => $order === 'asc' ? 'desc' : 'asc']) }}">
+                                        Date
+                                        @if($sortBy === 'date')
+                                            <i class="fa fa-sort-{{ $order === 'asc' ? 'asc' : 'desc' }} text-lg ms-2"></i>
+                                        @endif
+                                    </a>
+                                </th>
                                 <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">User</th>
                             </tr>
                         </thead>
@@ -41,14 +39,14 @@
                             <tr>
                                 <td class="text-uppercase text-default text-xs font-weight-bolder">
                                     <div class="d-flex align-items-center">
-                                        <span class="ms-3 text-xs">
-                                        {{ ($audit->currentPage() - 1) * $audit->perPage() + $loop->iteration }}
+                                        <span class="text-xs">
+                                            {{ ($audit->currentPage() - 1) * $audit->perPage() + $loop->iteration }}
                                         </span>
                                     </div>
                                 </td>
                                 <td class="text-uppercase text-default text-xs font-weight-bolder">
                                     <div class="d-flex align-items-center">
-                                        <span class="text-xs">
+                                        <span class="ms-2 text-xs">
                                             {{ $a->IDMK }}
                                         </span>
                                     </div>
@@ -100,7 +98,7 @@
                                 </td>
                                 <td class="text-uppercase text-default text-xs font-weight-bolder">
                                     <div class="d-flex align-items-center">
-                                        <span class="ms-3 text-xs">
+                                        <span class="text-xs">
                                             {{ $a->users }}
                                         </span>
                                     </div>
