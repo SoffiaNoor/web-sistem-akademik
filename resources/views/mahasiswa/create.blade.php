@@ -33,8 +33,8 @@
                                 </div>
                                 @endif
                             <div class="form-group">
-                                <label>IPK</label>
-                                <input type="number" class="form-control" id="IPK" name="IPK" required>
+                                <label>IPK <span style="font-style:italic;color:red">*Contoh : 3.0 (Menggunakan titik)</span></label>
+                                <input type="text" class="form-control" id="IPK" name="IPK" required>
                             </div>
                         </div>
                     </div>

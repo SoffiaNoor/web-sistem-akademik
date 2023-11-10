@@ -26,7 +26,8 @@ class MahasiswaController extends Controller
     public function show(string $NRP)
     {
         $mahasiswa = Mahasiswa::where('NRP', $NRP)->first();
-        return view("mahasiswa.view", compact('mahasiswa'));
+        $dosen = Dosen::all();
+        return view("mahasiswa.view", compact('mahasiswa', 'dosen'));
     }
     public function edit(Mahasiswa $mahasiswa)
     {

@@ -33,8 +33,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>ID Dosen Wali</label>
-                                <input type="text" class="form-control" value="{{$mahasiswa->IDDosen}}" disabled>
+                                <label>Dosen Wali</label>
+                                <input type="text" class="form-control" value=" {{$mahasiswa->dosenWali->IDDosen}} - {{$mahasiswa->dosenWali->NamaDosen}}" disabled>
                             </div>
                         </div>
                     </div>

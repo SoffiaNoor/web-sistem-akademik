@@ -35,7 +35,7 @@
                                 </div>
                                 @endif
                             <div class="form-group">
-                                <label>IPK</label>
+                                <label>IPK <span style="font-style:italic;color:red">*Contoh : 3.0 (Menggunakan titik)</span></label>
                                 <input type="text" class="form-control" id="exampleFormControlInput1"
                                     value="{{ number_format($mahasiswa->IPK, 2) }}" name="IPK">
                             </div>
