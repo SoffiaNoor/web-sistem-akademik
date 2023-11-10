@@ -11,10 +11,10 @@
                     <hr style="background-color:#01353f;height:10px;border-radius:40px;width:25%">
                 </div>
                 @if(session('error'))
-    <div class="alert alert-danger m-2" style="color:white;font-weight:bold">
-        {{ session('error') }}
-    </div>
-@endif
+                <div class="alert alert-danger m-2" style="color:white;font-weight:bold">
+                    {{ session('error') }}
+                </div>
+                @endif
                 <form class="p-3" method="POST" action="{{ route('ambil_kuliah.store')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="row">

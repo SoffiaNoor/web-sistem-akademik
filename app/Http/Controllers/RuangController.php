@@ -30,7 +30,9 @@ class RuangController extends Controller
         $this->validate($request, [
             'IDRuang' => 'required|max:5|string',
             'NamaRuang' => 'required|string',
-            'Kapasitas'=> 'required|integer',
+            'Kapasitas'=> 'required|integer|min:1',
+        ], [
+            'Kapasitas.min' => 'Kapasitas harus lebih dari atau sama dengan :min.',
         ]);
         
         try {
@@ -53,7 +55,9 @@ class RuangController extends Controller
     {
         $this->validate($request, [
             'NamaRuang' => 'required|string',
-            'Kapasitas' => 'required|integer',
+            'Kapasitas' => 'required|integer|min:1',
+        ], [
+            'Kapasitas.min' => 'Kapasitas harus lebih dari atau sama dengan :min.',
         ]);
 
         $Ruang->update($request->all());

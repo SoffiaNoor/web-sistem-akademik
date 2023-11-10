@@ -52,24 +52,20 @@ class AmbilKuliahController extends Controller
 
     public function destroy(string $NRP, string $IDMK)
     {
-        // Check if the ambil kuliah object exists
         $ambilKuliah = DB::table('AmbilKuliah')
             ->where('NRP', $NRP)
             ->where('IDMK', $IDMK)
             ->first();
 
         if (!$ambilKuliah) {
-            // Redirect the user to an error page
             return redirect()->route('ambil_kuliah.index')->with('error', 'Ambil kuliah tidak ditemukan!');
         }
 
-        // Delete the ambil kuliah object
         DB::table('AmbilKuliah')
             ->where('NRP', $NRP)
             ->where('IDMK', $IDMK)
             ->delete();
 
-        // Redirect the user to the ambil kuliah index page
         return redirect()->route('ambil_kuliah.index')->with('success', 'Ambil kuliah berhasil dihapus!');
     }
 
@@ -79,6 +75,9 @@ class AmbilKuliahController extends Controller
             'NRP' => 'required|string|max:5',
             'IDMK' => 'required|string|max:5',
             'NilaiAngka' => 'required|numeric|max:100|min:0',
+        ], [
+            'NilaiAngka.max' => 'Nilai Angka harus kurang dari atau sama dengan :max.',
+            'NilaiAngka.min' => 'Nilai Angka harus lebih dari atau sama dengan :min.',
         ]);
         try {
             $data = [

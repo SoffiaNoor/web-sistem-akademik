@@ -47,6 +47,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('tempat/{IDRuang}/{IDMK}/edit', [TempatController::class, 'update'])->name('tempat.update');
     Route::resource('/user', UserController::class);
     Route::post('/user/{id}', [UserController::class, 'changePassword'])->name('user.changePassword');
+    Route::get('/audit', [AuditController::class, 'showAudit'])->name('audit.showAudit');
 });
 
 Route::get('/404', function () {

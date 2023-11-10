@@ -11,6 +11,11 @@
                             </h5>
                             <hr style="background-color:#01353f;height:10px;border-radius:40px;width:25%">
                         </div>
+                        @if(session('error'))
+                            <div class="alert alert-danger m-2" style="color:white;font-weight:bold">
+                                {{ session('error') }}
+                            </div>
+                        @endif
                         <form class="p-3" method="POST" action="{{ route('mata_kuliah.update',$mataKuliah->IDMK)}}" enctype="multipart/form-data">
                         @csrf 
                         @method('PUT') 
@@ -34,9 +39,14 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
+                                    @if ($errors->has('SKS'))
+                                        <div class="alert alert-danger text-white font-weight-bold p-2 text-sm">
+                                            {{ $errors->first('SKS') }}
+                                        </div>
+                                    @endif
                                     <div class="form-group">
                                         <label>SKS</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInput1"
+                                        <input type="number" class="form-control" id="exampleFormControlInput1"
                                             value="{{$mataKuliah->SKS}}" name="SKS">
                                     </div>
                                 </div>

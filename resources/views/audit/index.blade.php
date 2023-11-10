@@ -23,7 +23,16 @@
                                 <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">Nama MK Baru
                                 </th>
                                 <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">Nama MK Old</th>
-                                <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">Date</th>
+                                <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">
+    <a href="{{ route('audit.showAudit', ['sort' => 'date', 'order' => $order === 'asc' ? 'desc' : 'asc']) }}">
+        Date
+        @if($sortBy === 'date')
+            <i class="fa fa-sort-{{ $order === 'asc' ? 'asc' : 'desc' }}"></i>
+        @endif
+    </a>
+</th>
+
+
                                 <th class="text-uppercase text-default text-xs font-weight-bolder ps-2">User</th>
                             </tr>
                         </thead>

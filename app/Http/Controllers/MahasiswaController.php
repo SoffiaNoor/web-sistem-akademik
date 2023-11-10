@@ -54,8 +54,11 @@ class MahasiswaController extends Controller
             'NamaMhs' => 'required|string',
             'Alamat' => 'required|string',
             'IDDosen' => 'required|max:5|string',
-            'IPK' => 'required|numeric',
+            'IPK' => 'required|numeric|max:4|min:0',
             'JenisKelamin' => 'required|string',
+        ], [
+            'IPK.max' => 'IPK harus kurang dari atau sama dengan :max.',
+            'IPK.min' => 'IPK harus lebih dari atau sama dengan :min.',
         ]);
 
         try {
@@ -82,8 +85,11 @@ class MahasiswaController extends Controller
             'NamaMhs' => 'required|string',
             'Alamat' => 'required|string',
             'IDDosen' => 'required|max:5|string',
-            'IPK' => 'required|numeric',
+            'IPK' => 'required|numeric|max:4|min:0',
             'JenisKelamin' => 'required|string',
+        ], [
+            'IPK.max' => 'IPK harus kurang dari atau sama dengan :max.',
+            'IPK.min' => 'IPK harus lebih dari atau sama dengan :min.',
         ]);
 
         $mahasiswa->update($request->all());

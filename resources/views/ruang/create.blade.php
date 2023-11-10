@@ -12,10 +12,10 @@
                             <hr style="background-color:#01353f;height:10px;border-radius:40px;width:25%">
                         </div>
                         @if(session('error'))
-    <div class="alert alert-danger m-2" style="color:white;font-weight:bold">
-        {{ session('error') }}
-    </div>
-@endif
+                            <div class="alert alert-danger m-2" style="color:white;font-weight:bold">
+                                {{ session('error') }}
+                            </div>
+                        @endif
                         <form class="p-3" method="POST" action="{{ route('ruang.store')}}" enctype="multipart/form-data">
                             @csrf 
                             <div class="row">
@@ -36,6 +36,11 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
+                                @if ($errors->has('Kapasitas'))
+                                <div class="alert alert-danger text-white font-weight-bold p-2 text-sm">
+                                    {{ $errors->first('Kapasitas') }}
+                                </div>
+                                @endif
                                     <div class="form-group">
                                         <label>Kapasitas</label>
                                         <input type="number" class="form-control" id="Kapasitas" name="Kapasitas" required>

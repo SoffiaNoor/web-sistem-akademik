@@ -12,5 +12,16 @@ class AuditController extends Controller
 
         return view("audit.index", compact('audit'));
     }
+
+    public function showAudit(Request $request)
+    {
+        $sortBy = $request->get('sort', 'default_column');
+        $order = $request->get('order', 'asc');
+
+        $audit = Audit::orderBy($sortBy, $order)->paginate(10);
+
+        return view('audit.index', compact('audit', 'sortBy', 'order'));
+    }
+
 }
 
