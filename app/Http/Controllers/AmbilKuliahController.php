@@ -105,7 +105,10 @@ class AmbilKuliahController extends Controller
 
     if ($item) {
         $data = $request->validate([
-            'NilaiAngka' => 'required',
+            'NilaiAngka' => 'required|numeric|max:100|min:0',
+        ],[
+            'NilaiAngka.max' => 'Nilai Angka harus kurang dari atau sama dengan :max.',
+            'NilaiAngka.min' => 'Nilai Angka harus lebih dari atau sama dengan :min.',
         ]);
 
         DB::table('AmbilKuliah')

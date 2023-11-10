@@ -9,6 +9,7 @@
                     <h5 class="font-weight-bolder">Detail Dosen:</h5>
                     <hr style="background-color:#01353f;height:10px;border-radius:40px;width:25%">
                 </div>
+                <div class="ms-3">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -53,7 +54,7 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div></div>
         </div>
     </div>
 </div>

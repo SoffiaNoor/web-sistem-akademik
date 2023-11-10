@@ -11,6 +11,11 @@
                     </h5>
                     <hr style="background-color:#01353f;height:10px;border-radius:40px;width:25%">
                 </div>
+                @if(session('error'))
+                <div class="alert alert-danger m-2" style="color:white;font-weight:bold">
+                    {{ session('error') }}
+                </div>
+                @endif
                 <form class="p-3" method="POST"
                     action="{{ route('ambil_kuliah.update', ['NRP' => $ambilKuliah->NRP, 'IDMK' => $ambilKuliah->IDMK]) }}"
                     enctype="multipart/form-data">
@@ -36,6 +41,11 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6">
+                        @if ($errors->has('NilaiAngka'))
+                            <div class="alert alert-danger text-white font-weight-bold p-2 text-sm">
+                                {{ $errors->first('NilaiAngka') }}
+                            </div>
+                            @endif
                             <div class="form-group">
                                 <label>Nilai Angka</label>
                                 <input type="number" class="form-control" id="exampleFormControlInput1"
